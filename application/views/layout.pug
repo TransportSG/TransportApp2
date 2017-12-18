@@ -1,0 +1,17 @@
+html
+    head
+        meta(name='viewport' content='initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+        meta(name='google' content='notranslate')
+
+        link(rel='stylesheet' href='/static/base-style.css')
+        block css
+
+        script(src='/static/helper.js' async)
+        block scripts
+
+        block head
+    body
+        div#header
+            block header
+        div#content
+            block content

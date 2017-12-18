@@ -1,0 +1,23 @@
+{
+  "name": "transportapp2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "eyeballcode@git.transportsg.me:TransportApp2"
+  },
+  "author": "Eyeballcode",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.7",
+    "pug": "^2.0.0-rc.4"
+  }
+}
