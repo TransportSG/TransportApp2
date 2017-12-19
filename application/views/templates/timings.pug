@@ -1,0 +1,41 @@
+-var operatorCSSMap = {'SMRT Buses': 'smrt', 'SBS Transit': 'sbst', 'Tower Transit Singapore': 'tts', 'Go-Ahead Singapore': 'gas'}
+
+if timings.length === 0
+    div.kosongBusStop
+        span No Services Are Serving This Bus Stop Now!
+        div.spacer
+
+-var timingsClone = timings
+for serviceTimingData in timingsClone
+    -var service = serviceTimingData.service
+    -var serviceData = busServiceData[service]
+    -var destination = serviceTimingData.destination
+    -var timings = serviceTimingData.timings
+
+    div.service-container
+        div(class=operatorCSSMap[serviceData.operator] + ' service-number-container')
+            div.service-number-inner-container
+                span.service-number=serviceData.serviceNumber
+                span.service-variant=serviceData.serviceVariant
+        div.miniEDS
+            div.edsText
+                span.towards Towards
+                a(href='/timings/' + destination.busStopCode).destination=destination.busStopName
+        div.timingsContainer
+            for bus in timings
+                -bus.timeToArrival = timingDiff(bus.arrivalTime, new Date())
+                div(class='timingContainer bus-load' + (bus.load*1 + 1))
+                    div.timeToArrival
+                        if +new Date() - bus.arrivalTime > 0
+                            span.timeToArr Arr
+                        else
+                            span.timeToArrMin=bus.timeToArrival.minutes
+                            span.timeToArrSec=bus.timeToArrival.seconds
+                    div.busType
+                        -var busTypes = ['', 'SD', 'DD', 'BD']
+                        span.busType=busTypes[bus.busType]
+                    div.wabStatus
+                        if bus.isWAB
+                            img(src='/static/images/wheelchair.svg')
+                        else
+                            img(src='/static/images/non-wheelchair.svg')

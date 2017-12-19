@@ -16,6 +16,7 @@ class BusServiceRepository extends Repository {
     findOne(service, callback) {
         if (this.serviceCache.has(service)) {
             callback(null, this.serviceCache.get(service));
+            return;
         }
 
         this.BusServiceModel.findOne({
