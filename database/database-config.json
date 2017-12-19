@@ -1,9 +1,0 @@
-{
-    "databases": {
-            "TransportApp": {
-            "username": "TransportApp",
-            "password": "Eyeball-TransportApp"
-        }
-    },
-    "databaseLocation": "database.transportsg.me"
-}
