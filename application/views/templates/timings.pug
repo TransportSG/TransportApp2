@@ -5,7 +5,9 @@ if timings.length === 0
         span No Services Are Serving This Bus Stop Now!
         div.spacer
 
--var timingsClone = timings
+-function getNumFromStr(str) {return str.match(/(\d+)/)[0];}
+-var timingsClone = timings.sort((svcA, svcB) => getNumFromStr(svcA.service) - getNumFromStr(svcB.service));
+
 for serviceTimingData in timingsClone
     -var service = serviceTimingData.service
     -var serviceData = busServiceData[service]
