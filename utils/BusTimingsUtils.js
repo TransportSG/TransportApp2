@@ -45,6 +45,16 @@ class BusTimingsUtils {
         });
     }
 
+    static loadDataForBusStopTimings(busServiceRepo, busStopsRepo, timings, callback) {
+        var services = timings.map(svc => svc.service).filter((svc, i, a) => a.indexOf(svc) === i);
+
+        BusTimingsUtils.loadServicesData(busServiceRepo, services, servicesData => {
+            BusTimingsUtils.convertBSCToObject(busStopsRepo, timings, timings => {
+                callback(timings, servicesData);
+            });
+        });
+    }
+
 }
 
 module.exports = BusTimingsUtils;

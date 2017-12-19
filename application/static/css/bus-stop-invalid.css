@@ -1,0 +1,39 @@
+#content {
+    display: flex;
+    height: calc(100vh - (100vw + 100vh) * 0.04);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#ohno {
+    order: 1;
+    display: inline-flex;
+    align-items: center;
+    width: 90vw;
+}
+
+#links {
+    order: 2;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#missing-bus-stop {
+    width: calc((100vw + 100vh) * 0.1);
+    height: calc((100vw + 100vh) * 0.1);
+    margin-left: calc((100vw + 100vh) * 0.03)
+}
+
+#text {
+    font-size: calc((100vw + 100vh) * 0.028);
+    margin-left: calc((100vw + 100vh) * 0.02);
+}
+
+.link {
+    font-size: calc((100vw + 100vh) * 0.03);
+    text-decoration: none;
+    color: #606060 !important;
+}

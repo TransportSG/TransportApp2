@@ -1,0 +1,17 @@
+extends ../layout
+
+block head
+    title Missing Bus Stop!
+block css
+    link(rel='stylesheet' href='/static/css/bus-stop-invalid.css')
+
+block header
+    img#page-icon(src='/static/images/broken-bus-stop.svg')
+    span#title Whoops!
+block content
+    div#ohno
+        img#missing-bus-stop(src='/static/images/broken-bus-stop.svg')
+        span#text You seem to be finding a missing bus stop!
+    div#links
+        a(href='/').link Go Home
+        a(href='/bus/stops/nearby').link Nearby Bus Stops

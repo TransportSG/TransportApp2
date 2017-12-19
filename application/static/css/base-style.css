@@ -25,12 +25,23 @@ html, body {
     align-items: center;
 }
 
+#header a {
+    display: inline-flex;
+    align-items: center;
+}
+
 #title {
     font-size: calc((100vw + 100vh) * 0.015);
     margin: 0 0 0 calc((100vw + 100vh) * 0.01);
 }
 
-.val {
-    display: inline-block;
-    min-width: 25px
+#page-icon {
+    width: calc((100vw + 100vh) * 0.02);
+    height: calc((100vw + 100vh) * 0.02);
+    margin-left: calc((100vw + 100vh) * 0.01);
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: #c5c5c5;
 }
