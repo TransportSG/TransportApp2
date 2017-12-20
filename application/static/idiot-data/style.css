@@ -61,7 +61,7 @@ html, body {
     width: calc(100% - 1.5vw);
     height: calc(100% - 1.5vw);
     border: 0.75vw solid black;
-    animation: flash-bg 5s infinite;
+    animation: flash-bg 0.5s infinite;
 
     display: flex;
     justify-content: center;
@@ -70,7 +70,7 @@ html, body {
 }
 
 .main-text {
-    animation: flash-text 5s infinite;
+    animation: flash-text 0.5s infinite;
     font-size: calc(5vw + 5vh);
 }
 
@@ -92,7 +92,7 @@ html, body {
   flex-direction: column;
   margin: 0 6vw;
 
-  animation: flash-face 5s infinite;
+  animation: flash-face 0.5s infinite;
 }
 
 .eyeball-container {
@@ -107,7 +107,7 @@ html, body {
   border: calc(0.3vw + 0.2vh) solid black;
   border-radius: 50%;
 
-  animation: flash-eyeballs 5s infinite;
+  animation: flash-eyeballs 0.5s infinite;
 }
 
 .eyeball-spacer {
@@ -126,5 +126,5 @@ html, body {
   border-color: transparent transparent black transparent;
   border-radius: 50%;
 
-  animation: flash-mouth 5s infinite;
+  animation: flash-mouth 0.5s infinite;
 }
