@@ -9,6 +9,7 @@ const FunctionUtils = require('../utils/FunctionUtils');
 
 const IndexRouter = require('../application/routes/IndexRouter');
 const BusStopTimingsRouter = require('../application/routes/BusStopTimingsRouter');
+const FunRouter = require('../application/routes/FunRouter');
 
 const serverConfig = require('./server-config.json');
 
@@ -59,6 +60,8 @@ class MainServer extends Module {
         expressApp.get('/', IndexRouter.index);
 
         expressApp.get('/timings/:busStopCode', BusStopTimingsRouter.index);
+
+        expressApp.get('/idiot', FunRouter.idiot);
 
         BusStopTimingsRouter.init();
     }
