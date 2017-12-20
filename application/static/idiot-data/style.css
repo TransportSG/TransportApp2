@@ -1,0 +1,130 @@
+@keyframes flash-bg {
+    0%   { background-color: #fff; }
+    49% { background-color: #fff; }
+    50% { background-color: #000; }
+    99% { background-color: #000; }
+    100% { background-color: #fff; }
+}
+
+@keyframes flash-text {
+    0%   { color: #000; }
+    49% { color: #000; }
+    50% { color: #fff; }
+    99% { color: #fff; }
+    100% { color: #000; }
+}
+
+@keyframes flash-eyeballs {
+    0%   { background-color: #fff; border-color: #000; }
+    49% { background-color: #fff; border-color: #000; }
+    50% { background-color: #000; border-color: #fff; }
+    99% { background-color: #000; border-color: #fff; }
+    100% { background-color: #fff; border-color: #000; }
+}
+
+@keyframes flash-face {
+    0%   { border-color: #000; }
+    49% { border-color: #000; }
+    50% { border-color: #fff; }
+    99% { border-color: #fff; }
+    100% { border-color: #000; }
+}
+
+@keyframes flash-mouth {
+    0%   { border-color: transparent transparent #000 transparent; }
+    49% { border-color: transparent transparent #000 transparent; }
+    50% { border-color: transparent transparent #fff transparent; }
+    99% { border-color: transparent transparent #fff transparent; }
+    100% { border-color: transparent transparent #000 transparent; }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flash-dummy {
+    width: 100vw;
+    height: 75vw;
+    max-height: 100vh;
+    max-width: 133.3333vh;
+}
+
+.main-container {
+    width: calc(100% - 1.5vw);
+    height: calc(100% - 1.5vw);
+    border: 0.75vw solid black;
+    animation: flash-bg 5s infinite;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-text {
+    animation: flash-text 5s infinite;
+    font-size: calc(5vw + 5vh);
+}
+
+.face-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.smiley-face {
+  width: calc(6vw + 5vh);
+  height: calc(6vw + 5vh);
+
+  border: calc(0.3vw + 0.2vh) solid black;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 6vw;
+
+  animation: flash-face 5s infinite;
+}
+
+.eyeball-container {
+  display: flex;
+}
+
+.eyeball {
+  display: block;
+  width: 1vw;
+  height: 1vw;
+  background-color: white;
+  border: calc(0.3vw + 0.2vh) solid black;
+  border-radius: 50%;
+
+  animation: flash-eyeballs 5s infinite;
+}
+
+.eyeball-spacer {
+  display: block;
+  width: 1.2vw;
+}
+
+.mouth {
+  margin-top: -7vw;
+
+  display: block;
+  width: calc(5vw + 3vh);
+  height: calc(7vw + 4vh);
+
+  border: calc(0.3vw + 0.2vh) solid black;
+  border-color: transparent transparent black transparent;
+  border-radius: 50%;
+
+  animation: flash-mouth 5s infinite;
+}

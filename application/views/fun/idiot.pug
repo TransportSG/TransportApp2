@@ -1,5 +1,22 @@
+mixin face
+    .smiley-face
+        .eyeball-container
+            .eyeball
+            .eyeball-spacer
+            .eyeball
+        .mouth
+
 html
     head
-
+        link(rel='stylesheet' href='/static/idiot-data/style.css')
+        script(src='/static/idiot-data/script.js')
     body
-        audio(src='/static/idiot-data/idiot.mp3' autoplay='true' loop='true')
+        audio(src='/static/idiot-data/idiot.mp3' loop autoplay)
+        div.container
+            div.flash-dummy
+                div.main-container
+                    h1.main-text you are an idiot
+                    div.face-container
+                        +face
+                        +face
+                        +face
