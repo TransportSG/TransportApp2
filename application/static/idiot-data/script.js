@@ -48,6 +48,6 @@ window.onload = () => {
 }
 
 onbeforeunload = function(event) {
-     recreateWindow(1);
+     recreateWindow(5);
      return true;
 };
