@@ -9,6 +9,7 @@ const FunctionUtils = require('../utils/FunctionUtils');
 
 const IndexRouter = require('../application/routes/IndexRouter');
 const BusStopTimingsRouter = require('../application/routes/BusStopTimingsRouter');
+const NearbyBusStopsRouter = require('../application/routes/NearbyBusStopsRouter');
 const FunRouter = require('../application/routes/FunRouter');
 
 const serverConfig = require('./server-config.json');
@@ -61,9 +62,12 @@ class MainServer extends Module {
 
         expressApp.get('/timings/:busStopCode', BusStopTimingsRouter.index);
 
+        expressApp.get('/nearby', NearbyBusStopsRouter.index);
+
         expressApp.get('/idiot', FunRouter.idiot);
 
         BusStopTimingsRouter.init();
+        NearbyBusStopsRouter.init();
     }
 
 }

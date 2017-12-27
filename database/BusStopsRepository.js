@@ -49,6 +49,10 @@ class BusStopsRepository extends Repository {
         throw new Error('Cannot update bus stops via repository!');
     }
 
+    customFind(query, callback) {
+        return this.BusStopsModel.find(query);
+    }
+
 }
 
 module.exports = BusStopsRepository;

@@ -4,7 +4,7 @@ const mongoose = require('mongoose'),
 var BusServiceSchema = new Schema({
     fullService: String,
     serviceNumber: String,
-    serviceVariant: String,
+    variant: String,
 
     routeType: String,
     operator: String,

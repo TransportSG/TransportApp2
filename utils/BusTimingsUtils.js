@@ -1,3 +1,22 @@
+function getServiceNumber(service) {
+	if (service.startsWith('NR')) {
+		return service.replace(/[0-9]/g, '');
+	} else if (service.startsWith('CT')) {
+		return 'CT';
+	} else
+	return service.replace(/[A-Za-z#]/g, '');
+}
+
+function getServiceVariant(service) {
+	if (service.startsWith('NR')) {
+		return service.replace(/[A-Za-z#]/g, '');
+	} else if (service.startsWith('CT')) {
+		return service.replace(/CT/, '');
+	} else
+	return service.replace(/[0-9]/g, '').replace(/#/, 'C');
+}
+
+
 class BusTimingsUtils {
 
     static lookupWithPromise(repository, service) {
@@ -17,9 +36,17 @@ class BusTimingsUtils {
         Promise.all(promises).then(data => {
             var serviceDataMap = {};
 
-            for (var service of data) {
+            data.forEach((service, i) => {
+                if (service == null) {
+                    service = {
+                        fullService: services[i],
+                        serviceNumber: getServiceNumber(services[i]),
+                        variant: getServiceVariant(services[i]),
+                        fake: true
+                    }
+                }
                 serviceDataMap[service.fullService] = service;
-            }
+            });
             setTimeout(callback.bind(null, serviceDataMap));
         });
     }

@@ -1,0 +1,1552 @@
+{
+    "3A": {
+        "interchanges": ["75009", "77331"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 12,
+                "max": 75
+            }, "evening": {
+                "min": 8,
+                "max": 37
+            }, "night": {
+                "min": 12,
+                "max": 99
+            }
+        }
+    },
+    "3B": {
+        "interchanges": ["77289", "77009"],
+        "frequency": {
+            "morning": {
+                "min": 15,
+                "max": 16
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "15A": {
+        "interchanges": ["77009", "83109"],
+        "frequency": {
+            "morning": {
+                "min": 9,
+                "max": 17
+            }, "afternoon": {
+                "min": 110,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "17A": {
+        "interchanges": ["84009", "84591"],
+        "frequency": {
+            "morning": {
+                "min": 4,
+                "max": 22
+            }, "afternoon": {
+                "min": 10,
+                "max": 46
+            }, "evening": {
+                "min": 10,
+                "max": 22
+            }, "night": {
+                "min": 22,
+                "max": 24
+            }
+        }
+    },
+    "34A": {
+        "interchanges": ["65009", "76059"],
+        "frequency": {
+            "morning": {
+                "min": 18,
+                "max": 44
+            }, "afternoon": {
+                "min": 26,
+                "max": 39
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "36A": {
+        "interchanges": ["95129", "09191"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 12,
+                "max": 12
+            }
+        }
+    },
+    "36B": {
+        "interchanges": ["93049", "93199"],
+        "frequency": {
+            "morning": {
+                "min": 8,
+                "max": 8
+            }, "afternoon": {
+                "min": 9,
+                "max": 99
+            }, "evening": {
+                "min": 9,
+                "max": 9
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "62A": {
+        "interchanges": ["65009", "81089"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 28,
+                "max": 28
+            }, "night": {
+                "min": 20,
+                "max": 20
+            }
+        }
+    },
+    "118A": {
+        "interchanges": ["65199", "96119"],
+        "frequency": {
+            "morning": {
+                "min": 14,
+                "max": 16
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "118B": {
+        "interchanges": ["96111", "65191"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 30,
+                "max": 30
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "66A": {
+        "interchanges": ["84009", "40011"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 17,
+                "max": 17
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "66B": {
+        "interchanges": ["28009", "07031"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 15,
+                "max": 15
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "78A": {
+        "interchanges": ["28009", "29121"],
+        "frequency": {
+            "morning": {
+                "min": 15,
+                "max": 15
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "79A": {
+        "interchanges": ["28009", "22009"],
+        "frequency": {
+            "morning": {
+                "min": 15,
+                "max": 17
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "96A": {
+        "interchanges": ["17009", "16169"],
+        "frequency": {
+            "morning": {
+                "min": 15,
+                "max": 16
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "96B": {
+        "interchanges": ["17009", "17171"],
+        "frequency": {
+            "morning": {
+                "min": 4,
+                "max": 6
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "98A": {
+        "interchanges": ["28091", "21179"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 6,
+                "max": 10
+            }, "night": {
+                "min": 10,
+                "max": 20
+            }
+        }
+    },
+    "98B": {
+        "interchanges": ["28501", "21099"],
+        "frequency": {
+            "morning": {
+                "min": 5,
+                "max": 9
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "106A": {
+        "interchanges": ["43009", "17179"],
+        "frequency": {
+            "morning": {
+                "min": 7,
+                "max": 41
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "173A": {
+        "interchanges": ["43009", "43169"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 15,
+                "max": 15
+            }
+        }
+    },
+    "183B": {
+        "interchanges": ["28009", "28189"],
+        "frequency": {
+            "morning": {
+                "min": 3,
+                "max": 8
+            }, "afternoon": {
+                "min": 3,
+                "max": 13
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "189A": {
+        "interchanges": ["43009", "43319"],
+        "frequency": {
+            "morning": {
+                "min": 3,
+                "max": 8
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 15,
+                "max": 20
+            }
+        }
+    }, ### SBST
+    "9A": {
+        "interchanges": ["84009", "98011"],
+        "frequency": {
+            "morning": {
+                "min": ,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "13A": {
+        "interchanges": ["54019", "53231"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "14A": {
+        "interchanges": ["84009", "09059"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "21A": {
+        "interchanges": ["80089", "07231"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "27A": {
+        "interchanges": ["67261", "76139"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "29A": {
+        "interchanges": ["75009", "76241"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "31A": {
+        "interchanges": ["75009", "85099"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "33A": {
+        "interchanges": ["16009", "10149"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "33B": {
+        "interchanges": ["84009", "82159"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "45A": {
+        "interchanges": ["63291", "62139"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "51A": {
+        "interchanges": ["28009", "20191"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "53A": {
+        "interchanges": ["77289", "95129"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "55B": {
+        "interchanges": ["53009", "54381"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "58A": {
+        "interchanges": ["62131", "75351"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "58B": {
+        "interchanges": ["77009", "70281"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "60A": {
+        "interchanges": ["82009", "84511"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "70A": {
+        "parent": "70M",
+        "interchanges": ["55509", "67041"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "70B": {
+        "interchanges": ["55101", "66359"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "72A": {
+        "interchanges": ["55509", "64549"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "72B": {
+        "interchanges": ["55509", "54481"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "80A": {
+        "interchanges": ["67009", "81089"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "88A": {
+        "interchanges": ["65069", "54269"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "88B": {
+        "interchanges": ["54261", "66471"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "89A": {
+        "interchanges": ["77289", "95039"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "90A": {
+        "interchanges": ["52009", "71189"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "92A": {
+        "interchanges": ["18271", "11351"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "92B": {
+        "interchanges": ["11009", "18281"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "94A": {
+        "interchanges": ["82009", "73019"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "95B": {
+        "interchanges": ["16009", "11361"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "100A": {
+        "interchanges": ["66009", "81089"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "105B": {
+        "interchanges": ["28009", "17179"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "109A": {
+        "interchanges": ["66009", "64611"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "112A": {
+        "interchanges": ["64009", "63031"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "113A": {
+        "interchanges": ["62059", "63031"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "125A": {
+        "interchanges": ["81081", "60219"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "127A": {
+        "interchanges": ["75009", "75281"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "130A": {
+        "interchanges": ["54009", "53189"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "131A": {
+        "interchanges": ["52499", "03217"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "135A": {
+        "interchanges": ["54009", "93201"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "138A": {
+        "interchanges": ["54009", "48131"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "138B": {
+        "interchanges": ["54009", "55121"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "145A": {
+        "interchanges": ["10209", "14249"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "147A": {
+        "interchanges": ["64009", "05019"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "154A": {
+        "interchanges": ["21551", "28091"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "154B": {
+        "interchanges": ["17179", "12101"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "158A": {
+        "interchanges": ["81089", "81081"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "159A": {
+        "interchanges": ["67009", "54399"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "159B": {
+        "interchanges": ["54391", "54481"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "170A": {
+        "interchanges": ["01109", "46069"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "179A": {
+        "interchanges": ["22009"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "195A": {
+        "interchanges": ["02099", "10169"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "195B": {
+        "interchanges": ["02099", "11169"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "196A": {
+        "interchanges": ["84009", "03218"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "198A": {
+        "interchanges": ["22009", "28459"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "200A": {
+        "interchanges": ["11379", "16009"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "222A": {
+        "interchanges": ["84009", "84039"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "222B": {
+        "interchanges": ["84009"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "240A": {
+        "interchanges": ["21581", "28091"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "241A": {
+        "interchanges": ["27271", "22529"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "265A": {
+        "interchanges": ["55009", "54589"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "286A": {
+        "interchanges": ["55009", "54659"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "286B": {
+        "interchanges": ["55309", "54261"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "268C": {
+        "interchanges": ["54269", "55301"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+    "269A": {
+        "interchanges": ["54009", "55169"],
+        "frequency": {
+            "morning": {
+                "min": 0,
+                "max": 0
+            }, "afternoon": {
+                "min": 0,
+                "max": 0
+            }, "evening": {
+                "min": 0,
+                "max": 0
+            }, "night": {
+                "min": 0,
+                "max": 0
+            }
+        }
+    },
+
+}
