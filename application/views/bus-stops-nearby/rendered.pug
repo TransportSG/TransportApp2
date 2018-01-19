@@ -1,0 +1,23 @@
+-function getDistanceCssClass(distance) {
+-    if (distance >= 0 && distance < 0.3) return 'nearby';
+-    if (distance >= 0.3 && distance < 0.6) return 'close';
+-    else return 'far';
+-}
+
+div#busStops
+    each busStop in busStops
+        div.busStopContainer
+            a(href='/timings/' + busStop.busStopCode).busStopLink
+                div(class='distanceMeter ' + getDistanceCssClass(busStop.distance))
+                    span.distance=(busStop.distance * 1000).toString().replace(/\.\d+/, '')
+                div.routeInfo
+                    span.busStopRoad=busStop.roadName
+                    span.busStopName=busStop.busStopCode + ' ' + busStop.busStopName
+                div.servicePeek
+                    div.services
+                        div.col
+                            each service in (busStop.busServices.slice(5, 10))
+                                span(class='busService ' + service.operatorCss)=service.fullService
+                        div.col
+                            each service in (busStop.busServices.slice(0, 5))
+                                span(class='busService ' + service.operatorCss)=service.fullService

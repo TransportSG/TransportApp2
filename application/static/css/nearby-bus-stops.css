@@ -2,3 +2,227 @@
     width: 100vw;
     height: 100%;
 }
+
+#busStops {
+    width: 100vw;
+    height: calc(100vh - (100vw + 100vh) * 0.04);
+}
+
+.busStopLink {
+    display: flex;
+    height: calc((100vw + 100vh) * 0.07);
+    background-color: #2a2a2a;
+    width: 100vw;
+    text-decoration: none;
+    color: #c5c5c5;
+}
+
+.busStopContainer:nth-child(even) .busStopLink {
+    background-color: #202020;
+}
+
+.distanceMeter {
+    order: 0;
+    width: calc((100vw + 100vh) * .05);
+    height: calc((100vw + 100vh) * 0.07);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc((100vw + 100vh) * .027);
+}
+
+.nearby {
+    background-color: #4ebe45;
+}
+
+.busStopContainer:nth-child(even) .nearby {
+    background-color: #43a93b;
+}
+
+.close {
+    background-color: #d7832c;
+}
+
+.busStopContainer:nth-child(even) .close {
+    background-color: #c47625;
+}
+
+.far {
+    background-color: #c63d3d;
+}
+
+.busStopContainer:nth-child(even) .far {
+    background-color: #b43535;
+}
+
+.routeInfo {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: calc((100vw + 100vh) * 0.01);
+}
+
+.busStopName {
+    font-size: calc((100vw + 100vh) * 0.015);
+}
+
+.busStopRoad {
+    font-size: calc((100vw + 100vh) * 0.01);
+    color: #8f8f8f;
+}
+
+.servicePeek {
+    margin-left: auto;
+}
+
+.services {
+    height: calc((100vw + 100vh) * 0.07);
+    display: inline-flex;
+}
+
+.col {
+    display: inline-flex;
+    height: calc((100vw + 100vh) * 0.07);
+    flex-direction: column;
+    align-items: center;
+    width: calc((100vw + 100vh) * 0.03);
+}
+
+.busService {
+    font-size: calc((100vw + 100vh) * 0.01);
+    width: calc((100vw + 100vh) * 0.03);
+    text-align: center;
+    height: calc((100vw + 100vh) * 0.07 / 5);
+    calc((100vw + 100vh) * 0.014)
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(odd) .sbst:nth-child(odd)  {
+    background-color: #b845be;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(odd)  .sbst:nth-child(even) {
+    background-color: #9d3ba2;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(even) .sbst:nth-child(even) {
+    background-color: #b845be;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(even) .sbst:nth-child(odd)  {
+    background-color: #9d3ba2;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(odd) .sbst:nth-child(even)  {
+    background-color: #b845be;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(odd)  .sbst:nth-child(odd) {
+    background-color: #9d3ba2;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(even) .sbst:nth-child(odd) {
+    background-color: #b845be;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(even) .sbst:nth-child(even)  {
+    background-color: #9d3ba2;
+}
+
+
+.busStopContainer:nth-child(odd) .col:nth-child(odd) .smrt:nth-child(odd) {
+    background-color: #c63d3d;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(odd)  .smrt:nth-child(even) {
+    background-color: #b43535;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(even) .smrt:nth-child(even) {
+    background-color: #c63d3d;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(even) .smrt:nth-child(odd)  {
+    background-color: #b43535;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(odd) .smrt:nth-child(even) {
+    background-color: #c63d3d;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(odd)  .smrt:nth-child(odd) {
+    background-color: #b43535;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(even) .smrt:nth-child(odd) {
+    background-color: #c63d3d;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(even) .smrt:nth-child(even)  {
+    background-color: #b43535;
+}
+
+
+.busStopContainer:nth-child(odd) .col:nth-child(odd) .tts:nth-child(odd) {
+    background-color: #4ebe45;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(odd) .tts:nth-child(even) {
+    background-color: #43a93b;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(even) .tts:nth-child(even) {
+    background-color: #4ebe45;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(even) .tts:nth-child(odd) {
+    background-color: #43a93b;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(odd) .tts:nth-child(even) {
+    background-color: #4ebe45;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(odd) .tts:nth-child(odd) {
+    background-color: #43a93b;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(even) .tts:nth-child(odd) {
+    background-color: #4ebe45;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(even) .tts:nth-child(even) {
+    background-color: #43a93b;
+}
+
+
+.busStopContainer:nth-child(odd) .col:nth-child(odd) .gas:nth-child(odd) {
+    background-color: #d7832c;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(odd) .gas:nth-child(even) {
+    background-color: #c47625;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(even) .gas:nth-child(even) {
+    background-color: #d7832c;
+}
+
+.busStopContainer:nth-child(odd) .col:nth-child(even) .gas:nth-child(odd) {
+    background-color: #c47625;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(odd) .gas:nth-child(even) {
+    background-color: #d7832c;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(odd) .gas:nth-child(odd) {
+    background-color: #c47625;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(even) .gas:nth-child(odd) {
+    background-color: #d7832c;
+}
+
+.busStopContainer:nth-child(even) .col:nth-child(even) .gas:nth-child(even) {
+    background-color: #c47625;
+}

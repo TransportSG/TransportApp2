@@ -63,6 +63,7 @@ class MainServer extends Module {
         expressApp.get('/timings/:busStopCode', BusStopTimingsRouter.index);
 
         expressApp.get('/nearby', NearbyBusStopsRouter.index);
+        expressApp.get('/nearby/geo', NearbyBusStopsRouter.geoSearch);
 
         expressApp.get('/idiot', FunRouter.idiot);
 

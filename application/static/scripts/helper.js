@@ -1,3 +1,4 @@
+HTMLDocument.prototype.on = HTMLDocument.prototype.addEventListener;
 HTMLElement.prototype.on = HTMLElement.prototype.addEventListener;
 Window.prototype.on = Window.prototype.addEventListener;
 

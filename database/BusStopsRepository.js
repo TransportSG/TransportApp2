@@ -49,8 +49,17 @@ class BusStopsRepository extends Repository {
         throw new Error('Cannot update bus stops via repository!');
     }
 
-    customFind(query, callback) {
-        return this.BusStopsModel.find(query);
+    locateNearby(latitude, longitude, range, callback) {
+        this.BusStopsModel.find({
+            'position.latitude': {
+                $gt: latitude - range,
+                $lt: latitude + range
+            },
+            'position.longitude': {
+                $gt: longitude - range,
+                $lt: longitude + range
+            }
+        }, callback);
     }
 
 }

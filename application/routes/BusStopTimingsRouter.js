@@ -24,19 +24,19 @@ class BusStopTimingsRouter extends Router {
         var busStopCode = req.params.busStopCode;
 
         if (!busStopCode) {
-            res.render('bus/stop-invalid');
+            res.render('bus-stop-timings/invalid');
             return;
         }
 
         BusStopTimingsRouter.busStops.findOne(busStopCode, (err, busStop) => {
             if (!busStop) {
-                res.render('bus/stop-invalid');
+                res.render('bus-stop-timings/invalid');
                 return;
             }
 
             var timings = BusTimings.getTimings()[busStopCode] || [];
             BusTimingsUtils.loadDataForBusStopTimings(BusStopTimingsRouter.busServices, BusStopTimingsRouter.busStops, timings, (timings, servicesData) => {
-                res.render('bus/stop', {
+                res.render('bus-stop-timings/index', {
                     busStopCode: busStopCode,
                     busStopName: busStop.busStopName,
                     timings: timings,
