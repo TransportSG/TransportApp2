@@ -111,7 +111,7 @@
 .busStopContainer:nth-child(odd) .col:nth-child(even) .sbst:nth-child(odd)  {
     background-color: #9d3ba2;
 }
-
+    
 .busStopContainer:nth-child(even) .col:nth-child(odd) .sbst:nth-child(even)  {
     background-color: #b845be;
 }

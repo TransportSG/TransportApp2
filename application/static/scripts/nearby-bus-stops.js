@@ -10,6 +10,7 @@ window.addEventListener('load', () => {
                 $('div.content').innerHTML = data;
             });
         }, err => {
+            $('div.content').innerHTML = err.message;
             console.log('failed to get position');
         });
     } else {
