@@ -36,27 +36,27 @@ html, body {
 }
 
 
-.nsl {
+.train-timing:nth-child(odd) .nsl {
     background-color: #c63d3d;
 }
 
-.service-container:nth-child(even) .nsl {
+.train-timing:nth-child(even) .nsl {
     background-color: #b43535;
 }
 
-.ewl {
+.train-timing:nth-child(odd) .ewl {
     background-color: #4ebe45;
 }
 
-.service-container:nth-child(even) .ewl {
+.train-timing:nth-child(even) .ewl {
     background-color: #43a93b;
 }
 
-.ccl {
+.train-timing:nth-child(odd) .ccl {
     background-color: #d7832c;
 }
 
-.service-container:nth-child(even) .ccl {
+.train-timing:nth-child(even).ccl {
     background-color: #c47625;
 }
 
@@ -105,12 +105,25 @@ html, body {
     justify-content: space-between;
     text-align: center;
 
-    background-color: #60bd29;
     color: #101010;
-
     justify-content: center;
     align-items: center;
+}
 
+.train-timing:nth-child(odd) .timingContainer:nth-child(odd) {
+    background-color: #58ad25;
+}
+
+.train-timing:nth-child(odd) .timingContainer:nth-child(even) {
+    background-color: #60bd29;
+}
+
+.train-timing:nth-child(even) .timingContainer:nth-child(odd) {
+    background-color: #60bd29;
+}
+
+.train-timing:nth-child(even) .timingContainer:nth-child(even) {
+    background-color: #58ad25;
 }
 
 .timeToArrMin {
