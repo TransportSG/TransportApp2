@@ -1,7 +1,10 @@
 extends ../layout.pug
 
 block head
-    title MRT Timings
+    if !!stationName
+        title='MRT Timings for ' + stationName
+    else
+        title MRT Timings
 
 block css
     link(rel='stylesheet' href='/static/css/mrt-timings.css')

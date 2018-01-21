@@ -12,14 +12,14 @@ class MRTTimingsRouter {
     static renderTimings(req, res) {
         let stationName = req.params.station;
         if (!!cache.get(stationName)) {
-            res.render('mrt-timings/index', {timings: cache.get(stationName)});
+            res.render('mrt-timings/index', {timings: cache.get(stationName), stationName});
             return;
         }
 
         MRTTimings.getStationTimings(stationName, (err, timings) => {
 
             cache.put(stationName, timings);
-            res.render('mrt-timings/index', {timings});
+            res.render('mrt-timings/index', {timings, stationName});
         });
     }
 
