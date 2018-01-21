@@ -14,7 +14,10 @@ block scripts
 
 block header
     img#page-icon(src='/static/images/bus-stop.svg')
-    span#title MRT Timings
+    if !!stationName
+        span#title='MRT Timings for ' + stationName
+    else
+        span#title MRT Timings
 
 block content
     select#mrt-stations
