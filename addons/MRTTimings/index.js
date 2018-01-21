@@ -22,14 +22,13 @@ class MRTTimings {
         });
     }
 
-    static extractMainContent(document, stationName) {
+    static extractMainContent(document) {
         var directions = document.querySelectorAll('[style="display:inline-block;color:Black;font-weight:bold;width:392px;"]');
         var timingsDivs = document.querySelectorAll('[style="display:inline-block;color:Black;font-weight:bold;width:392px;"] ~ div');
 
         var result = [];
 
         timingsDivs.forEach((timing, i) => {
-            if (stationName === 'HarbourFront') directions[i].textContent === 'Dhoby Ghaut';
             if (directions[i].textContent.trim() === '') return;
             var line = directions[i].textContent.split(' ')[1];
 
@@ -44,7 +43,7 @@ class MRTTimings {
         return result;
     }
 
-    static parseContents(contents) {
+    static parseContents(contents, stationName) {
         var timingInfo = [];
 
         contents.forEach(data => {
@@ -52,11 +51,12 @@ class MRTTimings {
                 trainLine: data.line,
                 timings: Array.prototype.map.call(data.timingRow, (trainTiming, i) => {
                     if (trainTiming.textContent === 'N/A') return null;
+                    if (stationName === 'Dhoby Ghaut' && data.line === 'CCL') data.directionRow[i].textContent = 'HarbourFront';
                     return {
                         destination: data.directionRow[i].textContent,
                         timeToArrival: trainTiming.textContent.match(/(\d+)/)[0]
                     };
-                }).filter(Boolean)
+                }).filter(Boolean).sort((a, b) => a.timeToArrival - b.timeToArrival)
             };
 
             if (finalData.timings.length > 0)
@@ -72,8 +72,8 @@ class MRTTimings {
                 setTimeout(callback.bind(null, err, null));
                 return;
             }
-            var contents = MRTTimings.extractMainContent(document, stationName);
-            var parsed = MRTTimings.parseContents(contents);
+            var contents = MRTTimings.extractMainContent(document);
+            var parsed = MRTTimings.parseContents(contents, stationName);
 
             setTimeout(callback.bind(null, null, parsed));
         });
