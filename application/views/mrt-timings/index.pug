@@ -1,0 +1,98 @@
+extends ../layout.pug
+
+block head
+    title Nearby Bus Stops
+
+block css
+    link(rel='stylesheet' href='/static/css/mrt-timings.css')
+
+block scripts
+    script(src='/static/scripts/mrt-timings.js' async)
+
+block header
+    img#page-icon(src='/static/images/bus-stop.svg')
+    span#title MRT Timings
+
+block content
+    select#mrt-stations
+        option Admiralty
+        option Aljunied
+        option Ang Mo Kio
+        option Bartley
+        option Bay Front
+        option Bedok
+        option Bishan
+        option Boon Lay
+        option Botanic Gardens
+        option Braddell
+        option Bras Basah
+        option Bugis
+        option Bukit Batok
+        option Bukit Gombak
+        option Buona Vista
+        option Caldecott
+        option Changi Airport
+        option Chinese Garden
+        option Choa Chu Kang
+        option City Hall
+        option Clementi
+        option Commonwealth
+        option Dakota
+        option Dhoby Ghaut
+        option Dover
+        option Esplanade
+        option Eunos
+        option Expo
+        option Farrer Road
+        option HarbourFront
+        option Haw Par Villa
+        option Holland Village
+        option Joo Koon
+        option Jurong East
+        option Kallang
+        option Kembangan
+        option Kent Ridge
+        option Khatib
+        option Kranji
+        option Labrador Park
+        option Lakeside
+        option Lavendar
+        option Lorong Chuan
+        option MacPherson
+        option Marina Bay
+        option Marina South Pier
+        option Marsiling
+        option Marymount
+        option Mountbatten
+        option Newton
+        option Nicoll Highway
+        option Novena
+        option One-North
+        option Orchard
+        option Outram Park
+        option Pasir Panjang
+        option Pasir Ris
+        option Paya Lebar
+        option Pioneer
+        option Promenade
+        option Queenstown
+        option Raffles Place
+        option Redhill
+        option Sembawang
+        option Serangoon
+        option Simei
+        option Somerset
+        option Stadium
+        option Tai Seng
+        option Tampines
+        option Tanah Merah
+        option Tanjong Pagar
+        option Telok Blangah
+        option Tiong Bahru
+        option Toa Payoh
+        option Woodlands
+        option Yew Tee
+        option Yio Chu Kang
+        option Yishun
+    div.content
+        include ../templates/mrt-timings

@@ -1,0 +1,117 @@
+@font-face {
+    font-family: BreeSerif;
+    src: url(/static/fonts/bree-serif.otf);
+}
+
+* {
+    font-family: BreeSerif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    color: #c5c5c5;
+    background-color: #1e1e1e;
+    max-width: 100%;
+    width: 100%;
+}
+
+.train-timing {
+    height: calc((100vw + 100vh) * 0.07);
+    display: flex;
+    background-color: #2a2a2a;
+}
+
+.train-timing:nth-child(even) {
+    background-color: #202020;
+}
+
+.train-line-container {
+    order: 0;
+    width: calc((100vw + 100vh) * .06);
+    height: calc((100vw + 100vh) * 0.07);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.nsl {
+    background-color: #c63d3d;
+}
+
+.service-container:nth-child(even) .nsl {
+    background-color: #b43535;
+}
+
+.ewl {
+    background-color: #4ebe45;
+}
+
+.service-container:nth-child(even) .ewl {
+    background-color: #43a93b;
+}
+
+.ccl {
+    background-color: #d7832c;
+}
+
+.service-container:nth-child(even) .ccl {
+    background-color: #c47625;
+}
+
+.train-line {
+    font-size: calc((100vw + 100vh) * .027);
+}
+
+
+.miniEDS {
+    order: 1;
+    height: calc((100vw + 100vh) * 0.07);
+    display: inline-flex;
+    justify-content: center;
+}
+
+.edsText {
+    margin-left: calc((100vw + 100vh) * 0.01);
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.towards {
+    color: #8f8f8f;
+    font-size: calc((100vw + 100vh) * 0.007);
+}
+
+.destination {
+    font-size: calc((100vw + 100vh) * 0.017);
+    margin-top: calc(((100vw + 100vh) * 0.004) * -1);
+    color: #c5c5c5;
+    text-decoration: none;
+}
+
+.timingsContainer {
+    order: 1;
+    margin-left: auto;
+    display: flex;
+
+    width: calc((100vw + 100vh) * .024);
+    text-align: center;
+
+    background-color: #60bd29;
+    color: #101010;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+.timeToArrMin {
+    font-size: calc((100vw + 100vh) * .0105);
+}
+
+.timeToArr {
+    padding-top: calc((100vw + 100vh) * .0012);
+    font-size: calc((100vw + 100vh) * .009);
+}

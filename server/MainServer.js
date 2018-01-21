@@ -11,6 +11,7 @@ const IndexRouter = require('../application/routes/IndexRouter');
 const BusStopTimingsRouter = require('../application/routes/BusStopTimingsRouter');
 const NearbyBusStopsRouter = require('../application/routes/NearbyBusStopsRouter');
 const FunRouter = require('../application/routes/FunRouter');
+const MRTTimingsRouter = require('../application/routes/MRTTimingsRouter');
 
 const serverConfig = require('./server-config.json');
 
@@ -66,6 +67,9 @@ class MainServer extends Module {
         expressApp.get('/nearby/geo', NearbyBusStopsRouter.geoSearch);
 
         expressApp.get('/idiot', FunRouter.idiot);
+
+        expressApp.get('/mrt/timings', MRTTimingsRouter.index);
+        expressApp.get('/mrt/timings/:station', MRTTimingsRouter.renderTimings);
 
         BusStopTimingsRouter.init();
         NearbyBusStopsRouter.init();
