@@ -56,9 +56,17 @@ class MRTTimings {
                         destination: data.directionRow[i].textContent,
                         timeToArrival: trainTiming.textContent.match(/(\d+)/)[0]
                     };
-                }).filter(Boolean).sort((a, b) => a.timeToArrival - b.timeToArrival)
+                }).filter(Boolean).sort((a, b) => a.timeToArrival - b.timeToArrival).filter((e, i, a) => {
+                    var foundIndex = -1;
+                    for (var j = 0; j < a.length; j++) {
+                        if (a[j].timeToArrival === e.timeToArrival) {
+                            if (foundIndex === j) return false;
+                            foundIndex = i;
+                        }
+                    }
+                    return true;
+                })
             };
-
             if (finalData.timings.length > 0)
                 timingInfo.push(finalData);
         });
