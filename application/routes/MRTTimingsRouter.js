@@ -17,8 +17,13 @@ class MRTTimingsRouter {
         }
 
         MRTTimings.getStationTimings(stationName, (err, timings) => {
+            if (err) {
+                res.status(400).end(err);
+                return;
+            }
 
             cache.put(stationName, timings);
+            
             res.render('mrt-timings/index', {timings, stationName});
         });
     }

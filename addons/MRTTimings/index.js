@@ -52,6 +52,7 @@ class MRTTimings {
                 timings: Array.prototype.map.call(data.timingRow, (trainTiming, i) => {
                     if (trainTiming.textContent === 'N/A') return null;
                     if (stationName === 'Dhoby Ghaut' && data.line === 'CCL') data.directionRow[i].textContent = 'HarbourFront';
+                    if (data.directionRow[i].textContent === 'Do not board') return null;
                     return {
                         destination: data.directionRow[i].textContent,
                         timeToArrival: trainTiming.textContent.match(/(\d+)/)[0]
