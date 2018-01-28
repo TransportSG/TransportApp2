@@ -29,6 +29,8 @@
     align-items: center;
     justify-content: center;
     font-size: calc((100vw + 100vh) * .027);
+
+    color: #d2d2d2;
 }
 
 .nearby {
@@ -111,7 +113,7 @@
 .busStopContainer:nth-child(odd) .col:nth-child(even) .sbst:nth-child(odd)  {
     background-color: #9d3ba2;
 }
-    
+
 .busStopContainer:nth-child(even) .col:nth-child(odd) .sbst:nth-child(even)  {
     background-color: #b845be;
 }

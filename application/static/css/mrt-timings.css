@@ -62,6 +62,8 @@ html, body {
 
 .train-line {
     font-size: calc((100vw + 100vh) * .027);
+
+    color: #d2d2d2;
 }
 
 
