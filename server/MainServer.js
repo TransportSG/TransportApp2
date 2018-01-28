@@ -33,7 +33,7 @@ class MainServer extends Module {
 
     static initServer(expressApp) {
         var protocol = serverConfig.httpsEnabled ? https : http;
-        var port = serverConfig.httpsEnabled ? 443 : serverConfig.port;
+        var port = serverConfig.httpsEnabled ? httpsPort : serverConfig.httpPort;
 
         var createServer = FunctionUtils.bindArgsAsArray(protocol.createServer, serverConfig.httpsEnabled ? [{
             key: fs.readFileSync('https/privkey.pem'),

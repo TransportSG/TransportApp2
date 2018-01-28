@@ -18,7 +18,7 @@ class HTTPRedirectServer extends Module {
                 res.end();
             });
 
-            HTTPRedirectServer.server.listen(80);
+            HTTPRedirectServer.server.listen(serverConfig.httpPort);
         }
     }
 
