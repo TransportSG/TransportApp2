@@ -3,9 +3,6 @@
     src: url(/static/fonts/bree-serif.otf);
 }
 
-* {
-    font-family: BreeSerif;
-}
 
 html, body {
     margin: 0;
@@ -14,6 +11,7 @@ html, body {
     background-color: #1e1e1e;
     max-width: 100%;
     width: 100%;
+    font-family: BreeSerif;
 }
 
 #header {

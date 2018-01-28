@@ -1,3 +1,8 @@
+@font-face {
+    font-family: FFMeta;
+    src: url(/static/fonts/ff-meta.otf);
+}
+
 .sbst {
     background-color: #b845be;
 }
@@ -46,6 +51,8 @@
     height: calc((100vw + 100vh) * 0.07);
     display: inline-flex;
     align-items: center;
+
+    font-family: FFMeta;
 }
 
 .service-number-inner-container {
