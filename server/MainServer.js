@@ -4,7 +4,8 @@ const https = require('https');
 const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
-const path = require('path')
+const path = require('path');
+const fs = require('fs');
 const FunctionUtils = require('../utils/FunctionUtils');
 
 const IndexRouter = require('../application/routes/IndexRouter');
@@ -38,7 +39,7 @@ class MainServer extends Module {
         var createServer = FunctionUtils.bindArgsAsArray(protocol.createServer, serverConfig.httpsEnabled ? [{
             key: fs.readFileSync('https/privkey.pem'),
             cert: fs.readFileSync('https/cert.pem'),
-            ca: fs.readFileSync('/https/chain.pem')
+            ca: fs.readFileSync('https/chain.pem')
         }, expressApp] : [expressApp]);
 
         MainServer.server = createServer();
