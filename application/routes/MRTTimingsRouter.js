@@ -23,7 +23,7 @@ class MRTTimingsRouter {
             }
 
             cache.put(stationName, timings);
-            
+
             res.render('mrt-timings/index', {timings, stationName});
         });
     }
