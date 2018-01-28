@@ -19,10 +19,11 @@ for serviceTimingData in timingsClone
             div.service-number-inner-container
                 span.service-number=serviceData.serviceNumber
                 span.service-variant=serviceData.variant
-        div.miniEDS
+
+        a(href='/timings/' + destination.busStopCode).miniEDS
             div.edsText
                 span.towards Towards
-                a(href='/timings/' + destination.busStopCode).destination=destination.busStopName
+                span.destination=destination.busStopName
         div.timingsContainer
             for bus in timings
                 -bus.timeToArrival = timingDiff(bus.arrivalTime, new Date())

@@ -74,7 +74,8 @@
     order: 1;
     height: calc((100vw + 100vh) * 0.07);
     display: inline-flex;
-    justify-content: center;
+
+    width: 100%;
 }
 
 .edsText {
@@ -98,7 +99,6 @@
 
 .timingsContainer {
     order: 1;
-    margin-left: auto;
     display: flex;
 }
 
