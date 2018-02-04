@@ -36,6 +36,7 @@
 }
 
 .service-container {
+    width: 100vw;
     height: calc((100vw + 100vh) * 0.07);
     display: flex;
     background-color: #2a2a2a;
