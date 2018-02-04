@@ -1,0 +1,51 @@
+html, body {margin: 0}
+
+.busStopContainer {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.busStopContainer:nth-child(even) {
+    background: #202020;
+}
+
+.busStopContainer:nth-child(odd) {
+    background: #2a2a2a;
+}
+
+.busStopHideContainer {
+    width: 100vw;
+    display: flex;
+    color: #c5c5c5;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding-top: calc((100vw + 100vh) * 0.01);
+    padding-bottom: calc((100vw + 100vh) * 0.01);
+}
+
+.busStopHideCheckbox {
+    display: none;
+}
+
+.busStopHideCheckbox:checked ~ .busStopContents {
+    display: flex;
+}
+
+.busStopHideCheckbox:not(:checked) ~ .busStopContents {
+    display: none;
+}
+
+.busStopName {
+    font-size: calc((100vw + 100vh) * 0.03);
+}
+
+.busStopContents {
+    width: 100vw;
+    display: flex;
+    color: #c5c5c5;
+
+    flex-direction: column;
+}

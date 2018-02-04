@@ -1,0 +1,13 @@
+div#busStops
+    for busStopCode in Object.keys(parsedData)
+        -var busStopData = busStopsData[busStopCode]
+        -var busStopTimings = parsedData[busStopCode]
+
+        div.busStopContainer
+            label(for='checkbox-' + busStopCode).busStopHideContainer
+                span.busStopName=busStopData.busStopName
+            input(type='checkbox' id='checkbox-' + busStopCode).busStopHideCheckbox
+            div.busStopContents
+                -var timings = busStopTimings.timings
+                -var busServiceData = busStopTimings.servicesData
+                include ../templates/bus-timings
