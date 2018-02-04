@@ -1,3 +1,10 @@
+div#serviceSummary
+    -var services = Object.values(parsedData).map(busStop => Object.keys(busStop.servicesData));
+    -var flattened = services.reduce((a, b) => a.concat(b), []);
+    -var deduped = flattened.filter((element, index, array) => array.indexOf(element) === index);
+    span Service Summary:
+    span=' ' + deduped.sort().join(', ')
+
 div#busStops
     for busStopCode in Object.keys(parsedData)
         -var busStopData = busStopsData[busStopCode]
