@@ -9,7 +9,7 @@ var BusServiceSchema = new Schema({
     routeType: String,
     operator: String,
     interchanges: [
-
+        String
     ],
 
     firstBus: {
