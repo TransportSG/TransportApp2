@@ -37,7 +37,7 @@ class EDSRouter extends Router {
                 res.json({
                     operator: svc.operator,
                     routeType: svc.routeType,
-                    interchanges: [ints[0], ints[1]].filter(int => !int.toLowerCase().includes('blk'))
+                    interchanges: [ints[0], ints[1]].filter(Boolean).filter(int => !(int.toLowerCase().includes('blk')))
                 });
                 res.end();
             });
