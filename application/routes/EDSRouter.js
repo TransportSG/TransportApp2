@@ -19,15 +19,15 @@ class EDSRouter extends Router {
         EDSRouter.busServices.findOne(svc, (err, svc) => {
             if (!svc) {res.end('error!'); return;}
             var promises = [];
-            var ints = [];
+            var ints = {};
 
-            svc.interchanges.forEach(int => {
+            svc.interchanges.forEach((int, i) => {
                 promises.push(new Promise((a, r) => {
                     EDSRouter.busStops.findOne(int, (err, intStop) => {
                         if (intStop)
-                            ints.push(intStop.busStopName);
+                            ints[i] = intStop.busStopName;
                         else
-                            ints.push(int);
+                            ints[i] = int;
                         a();
                     });
                 }));
@@ -37,7 +37,7 @@ class EDSRouter extends Router {
                 res.json({
                     operator: svc.operator,
                     routeType: svc.routeType,
-                    interchanges: ints.filter(int => !int.toLowerCase().includes('blk'))
+                    interchanges: [ints[0], ints[1]].filter(int => !int.toLowerCase().includes('blk'))
                 });
                 res.end();
             });
