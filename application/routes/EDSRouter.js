@@ -13,15 +13,21 @@ class EDSRouter extends Router {
 
     static svc(req, res) {
         let svc = req.params.svc;
-        if (!svc) {res.end(400); return;}
+        res.header('Access-Control-Allow-Origin', '*');
+
+        if (!svc) {res.end('error!'); return;}
         EDSRouter.busServices.findOne(svc, (err, svc) => {
+            if (!svc) {res.end('error!'); return;}
             var promises = [];
             var ints = [];
 
             svc.interchanges.forEach(int => {
                 promises.push(new Promise((a, r) => {
                     EDSRouter.busStops.findOne(int, (err, intStop) => {
-                        ints.push(intStop.busStopName);
+                        if (intStop)
+                            ints.push(intStop.busStopName);
+                        else
+                            ints.push(int);
                         a();
                     });
                 }));
@@ -30,7 +36,6 @@ class EDSRouter extends Router {
             Promise.all(promises).then(() => {
                 svc.interchanges = ints;
 
-                res.header('Access-Control-Allow-Origin', '*');
 
                 res.json(svc);
                 res.end();
