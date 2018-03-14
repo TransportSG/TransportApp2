@@ -21,7 +21,7 @@ class EDSRouter extends Router {
             svc.interchanges.forEach(int => {
                 promises.push(new Promise((a, r) => {
                     EDSRouter.busStops.findOne(int, (err, intStop) => {
-                        ints.push(intStop);
+                        ints.push(intStop.busStopName);
                         a();
                     });
                 }));
