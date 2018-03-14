@@ -12,7 +12,6 @@ class HTTPRedirectServer extends Module {
     static init() {
         if (serverConfig.httpsEnabled) {
             HTTPRedirectServer.server = http.createServer((req, res) => {
-
                 res.writeHead(301, {
                     Location: serverConfig.redirectURL + req.url
                 });

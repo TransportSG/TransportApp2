@@ -14,6 +14,7 @@ const NearbyBusStopsRouter = require('../application/routes/NearbyBusStopsRouter
 const FunRouter = require('../application/routes/FunRouter');
 const MRTTimingsRouter = require('../application/routes/MRTTimingsRouter');
 const NearbyNWABsRouter = require('../application/routes/NearbyNWABsRouter');
+const EDSRouter = require('../application/routes/EDSRouter');
 
 const serverConfig = require('./server-config.json');
 
@@ -76,9 +77,12 @@ class MainServer extends Module {
         expressApp.get('/nearby/nwabs', NearbyNWABsRouter.index);
         expressApp.get('/nearby/nwabs/geo', NearbyNWABsRouter.doLookup);
 
+        expressApp.get('/eds/:svc', EDSRouter.svc);
+
         BusStopTimingsRouter.init();
         NearbyBusStopsRouter.init();
         NearbyNWABsRouter.init();
+        EDSRouter.init();
     }
 
 }
