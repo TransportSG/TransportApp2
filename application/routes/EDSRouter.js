@@ -34,10 +34,11 @@ class EDSRouter extends Router {
             });
 
             Promise.all(promises).then(() => {
-                svc.interchanges = ints;
-
-
-                res.json(svc);
+                res.json({
+                    operator: svc.operator,
+                    routeType: svc.routeType,
+                    interchanges: ints
+                });
                 res.end();
             });
         })
