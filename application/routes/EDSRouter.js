@@ -13,6 +13,9 @@ class EDSRouter extends Router {
         let svc = req.params.svc;
         if (!svc) {res.end(400); return;}
         EDSRouter.busServices.findOne(svc, (err, svc) => {
+
+            res.header('Access-Control-Allow-Origin', '*');
+
             res.json(svc);
             res.end();
         })
