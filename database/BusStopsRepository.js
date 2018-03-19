@@ -34,19 +34,19 @@ class BusStopsRepository extends Repository {
     }
 
     create(data, callback) {
-        throw new Error('Cannot create new bus stop via repository!');
+        new this.BusStopsModel(data).save(callback);
     }
 
     remove(query, callback) {
-        throw new Error('Cannot remove bus stops via repository!');
+        this.BusStopsModel.remove(query, callback);
     }
 
     updateOne(query, data, callback) {
-            throw new Error('Cannot update bus stops via repository!');
+        this.BusStopsModel.findOneAndUpdate(query, {$set: data}, {}, callback);
     }
 
     updateAll(query, data, callback) {
-        throw new Error('Cannot update bus stops via repository!');
+        throw new Error('Cannot update all!');
     }
 
     locateNearby(latitude, longitude, range, callback) {

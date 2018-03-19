@@ -26,7 +26,7 @@ busStopsLister.getData(data => {
 
         let query = {busStopCode: busStop.BusStopCode};
 
-        busStopsRepo.findOne(query, (err, busStop) => {
+        busStopsRepo.findOne(query.busStopCode, (err, busStop) => {
             if (completedBusStops.includes(query.busStopCode)) return;
             completedBusStops.push(query.busStopCode);
 

@@ -35,19 +35,19 @@ class BusServiceRepository extends Repository {
     }
 
     create(data, callback) {
-        throw new Error('Cannot create new bus service via repository!');
+        new this.BusServiceModel(data).save(callback);
     }
 
     remove(query, callback) {
-        throw new Error('Cannot remove bus service via repository!');
+        this.BusServiceModel.remove(query, callback);
     }
 
     updateOne(query, data, callback) {
-            throw new Error('Cannot update bus service via repository!');
+        this.BusServiceModel.findOneAndUpdate(query, {$set: {data}}, {}, callback);
     }
 
     updateAll(query, data, callback) {
-        throw new Error('Cannot update bus service via repository!');
+        throw new Error('Cannot update all!');
     }
 
 }
