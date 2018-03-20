@@ -1,4 +1,5 @@
--var serviceSummary = Object.keys(possibleTimings).map(busStopCode => Object.keys(possibleTimings[busStopCode])).reduce((a, b) => a.concat(b), []).filter((e, i, a) => a.indexOf(e) === i)
+-var serviceSummary = Object.keys(possibleTimings).map(busStopCode => possibleTimings[busStopCode].map(svc => svc.service)).reduce((a, b) => a.concat(b), []).filter((e, i, a) => a.indexOf(e) === i)
+
 div
     span='Service Summary: ' + serviceSummary.join(', ')
 for busStopCode in Object.keys(possibleTimings)
@@ -18,10 +19,10 @@ for busStopCode in Object.keys(possibleTimings)
                     div.miniEDS
                         div.edsText
                             span.towards Towards
-                            a(href='/timings/' + service.terminal.busStopCode).destination=service.terminal.busStopName
+                            a(href='/timings/' + service.destination.busStopCode).destination=service.destination.busStopName
                     div.timingsContainer
-                        for bus in service
-                            -bus.timeToArrival = timingDiff(bus.arrivalTime, new Date())
+                        for bus in service.timings
+                            -bus.timeToArrival = timingDiff(bus.arrivalTime, new Date());
                             div(class='timingContainer bus-load' + (bus.load*1 + 1))
                                 div.timeToArrival
                                     if +new Date() - bus.arrivalTime > 0

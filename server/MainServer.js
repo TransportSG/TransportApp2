@@ -66,7 +66,8 @@ class MainServer extends Module {
         expressApp.get('/', IndexRouter.index);
 
         expressApp.get('/timings/search', BusSearcherRouter.index);
-        
+        expressApp.post('/timings/search', BusSearcherRouter.search);
+
         expressApp.get('/timings/:busStopCode', BusStopTimingsRouter.index);
 
         expressApp.get('/nearby', NearbyBusStopsRouter.index);
@@ -87,6 +88,7 @@ class MainServer extends Module {
         NearbyBusStopsRouter.init();
         NearbyNWABsRouter.init();
         EDSRouter.init();
+        BusSearcherRouter.init();
     }
 
 }
