@@ -1,5 +1,3 @@
--var operatorCSSMap = {'SMRT Buses': 'smrt', 'SBS Transit': 'sbst', 'Tower Transit Singapore': 'tts', 'Go-Ahead Singapore': 'gas'}
-
 if timings.length === 0
     div.kosongBusStop
         span No Services Are Serving This Bus Stop Now!
@@ -15,7 +13,7 @@ for serviceTimingData in timingsClone
     -var timings = serviceTimingData.timings
 
     div.service-container
-        div(class=operatorCSSMap[serviceData.operator] + ' service-number-container')
+        div(class=serviceData.operator.toLowerCase() + ' service-number-container')
             div.service-number-inner-container
                 span.service-number=serviceData.serviceNumber
                 span.service-variant=serviceData.variant
