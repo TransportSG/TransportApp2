@@ -13,17 +13,22 @@ class BusServiceRepository extends Repository {
         this.BusServiceModel = databaseConnection.model('BusService', BusServiceSchema);
     }
 
-    findOne(service, callback) {
-        if (this.serviceCache.has(service)) {
-            callback(null, this.serviceCache.get(service));
+    findOne(service, direction, callback) {
+        if (!callback) {
+            callback = direction;
+            direction = 1;
+        }
+        if (this.serviceCache.has(service + '.' + direction)) {
+            callback(null, this.serviceCache.get(service + '.' + direction));
             return;
         }
 
         this.BusServiceModel.findOne({
-            fullService: service
+            fullService: service,
+            routeDirection: direction
         }, (err, busService) => {
             if (busService) {
-                this.serviceCache.set(service, busService);
+                this.serviceCache.set(service + '.' + direction, busService);
             }
 
             setTimeout(callback.bind(null, err, busService));
