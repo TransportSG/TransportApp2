@@ -119,6 +119,7 @@ class BusSearcherRouter extends Router {
 
                 BusTimingsUtils.loadDataForBusStopTimings(BusSearcherRouter.busServices, BusSearcherRouter.busStops, timings, (newTimings, servicesData) => {
                     possibleTimings[busStopCode] = newTimings;
+                    serviceData = Object.assign(serviceData, servicesData);
                     BusSearcherRouter.busStops.findOne(busStopCode, (err, busStop) => {
                         busStops[busStopCode] = busStop;
                         resolve();
@@ -139,6 +140,7 @@ class BusSearcherRouter extends Router {
             res.render('bus-searcher/results.pug', {
                 busStops,
                 timingDiff,
+                servicesData: serviceData,
                 possibleTimings
             })
         });

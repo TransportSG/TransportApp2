@@ -9,8 +9,10 @@ for busStopCode in Object.keys(possibleTimings)
                 span.busStopName=busStops[busStopCode].busStopName
         input.hideTimings(type='checkbox' id='busStop-' + busStopCode)
         div.timings
-            each serviceName in Object.keys(possibleTimings[busStopCode])
+            each serviceName in possibleTimings[busStopCode].map(svc => svc.service)
+                -var serviceData = servicesData[serviceName];
                 -var service = possibleTimings[busStopCode][serviceName];
+
                 div.service-container
                     div(class=service.operator + ' service-number-container')
                         div.service-number-inner-container
@@ -35,6 +37,6 @@ for busStopCode in Object.keys(possibleTimings)
                                     span.busType=busTypes[bus.busType]
                                 div.wabStatus
                                     if bus.isWAB
-                                        img(src='/static/bus/timings/wheelchair-bus.svg')
+                                        img(src='/static/images/wheelchair.svg')
                                     else
-                                        img(src='/static/bus/timings/non-wheelchair-bus.svg')
+                                        img(src='/static/bus/images/non-wheelchair.svg')
