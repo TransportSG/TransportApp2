@@ -86,7 +86,33 @@ class BusSearcherRouter extends Router {
 
                 if (matchingTimings.length > 0) {
                     busServiceTiming.timings = matchingTimings;
-                    possibleTimings[busStopCode] = busServiceTiming;
+                    if (!possibleTimings[busStopCode]) possibleTimings[busStopCode] = [];
+                    possibleTimings[busStopCode].push(busServiceTiming);
+                }
+            });
+        });
+
+        return possibleTimings;
+    }
+
+    static filterByType(timings, type) {
+        let possibleTimings = {};
+        let busStopCodes = Object.keys(timings);
+        let typeMap = [0, 'SD', 'DD', 'BD'];
+
+        busStopCodes.forEach(busStopCode => {
+            let busStopTimings = timings[busStopCode];
+
+            busStopTimings.forEach(busServiceTiming => {
+                let matchingTimings = busServiceTiming.timings.filter(bus => {
+
+                return typeMap[bus.busType] === type;
+            });
+
+                if (matchingTimings.length > 0) {
+                    busServiceTiming.timings = matchingTimings;
+                    if (!possibleTimings[busStopCode]) possibleTimings[busStopCode] = [];
+                    possibleTimings[busStopCode].push(busServiceTiming);
                 }
             });
         });
@@ -110,8 +136,9 @@ class BusSearcherRouter extends Router {
         let filteredServices = BusSearcherRouter.filterServices(timingsCache, possibleSvcs);
 
         let nwabFiltered = BusSearcherRouter.filterByNWAB(filteredServices, parsedData.wheelchair);
+        let typeFiltered = BusSearcherRouter.filterByType(nwabFiltered, parsedData.type);
 
-        console.log(JSON.stringify(nwabFiltered, null, 2));
+        console.log(JSON.stringify(typeFiltered, null, 2));
         console.log(parsedData);
     }
 
