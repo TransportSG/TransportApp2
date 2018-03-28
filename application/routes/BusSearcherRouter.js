@@ -5,12 +5,21 @@ const BusServiceRepository = require('../../database/BusServiceRepository');
 const DatabaseConnectionManager = require('../../database/DatabaseConnectionManager');
 const TextParser = require('../../addons/SimpleEnglishParser/index');
 const BusTimingsUtils = require('../../utils/BusTimingsUtils');
+const NearbyNWABsRouter = require('./NearbyNWABsRouter');
 
 const BusDepotData = require('./bus-depots.json');
 
 function objectType(object) {
     return Object.prototype.toString.call(object).match(/\[object (\w+)\]/)[1];
 }
+
+var timingDiff = (a, b) => {
+    var diff = new Date(Math.abs(a - b));
+    return {
+        minutes: diff.getUTCMinutes(),
+        seconds: diff.getUTCSeconds(),
+    }
+};
 
 class BusSearcherRouter extends Router {
 
@@ -106,7 +115,7 @@ class BusSearcherRouter extends Router {
             busStopTimings.forEach(busServiceTiming => {
                 let matchingTimings = busServiceTiming.timings.filter(bus => {
 
-                return typeMap[bus.busType] === type;
+                return !!type ? typeMap[bus.busType] === type : true;
             });
 
                 if (matchingTimings.length > 0) {
@@ -138,8 +147,11 @@ class BusSearcherRouter extends Router {
         let nwabFiltered = BusSearcherRouter.filterByNWAB(filteredServices, parsedData.wheelchair);
         let typeFiltered = BusSearcherRouter.filterByType(nwabFiltered, parsedData.type);
 
-        console.log(JSON.stringify(typeFiltered, null, 2));
-        console.log(parsedData);
+        NearbyNWABsRouter.getDataForAllBusTimings(typeFiltered, parsedData => {
+            NearbyNWABsRouter.getDataForAllBusStops(Object.keys(typeFiltered), busStopsData => {
+                res.render('nearby-nwabs/rendered', {parsedData, busStopsData, timingDiff});
+            });
+        });
     }
 
 }
