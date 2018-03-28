@@ -48,7 +48,7 @@ class BusServiceRepository extends Repository {
     }
 
     updateOne(query, data, callback) {
-        this.BusServiceModel.findOneAndUpdate(query, {$set: {data}}, {}, callback);
+        this.BusServiceModel.findOneAndUpdate(query, {$set: data}, {}, callback);
     }
 
     updateAll(query, data, callback) {

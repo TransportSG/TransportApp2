@@ -66,7 +66,6 @@ busServiceLister.getData(data => {
         let query = {fullService: busService.ServiceNo, routeDirection: busService.Direction};
 
         busServiceRepo.findOne(busService.ServiceNo, busService.Direction, (err, busService) => {
-
             if (!!busService) {
                 busServiceRepo.updateOne(query, serviceData, () => {
                     console.log('updated ' + query.fullService, query.routeDirection);
