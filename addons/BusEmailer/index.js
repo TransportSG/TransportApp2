@@ -37,6 +37,24 @@ class BusEmailer extends Module {
         return {svcsWithNWABs, svcsWithBendies};
     }
 
+    static getArrayDiff(oldArray, newArray) {
+        let additions = [], subtractions = [];
+
+        newArray.forEach(element => {
+            if (!oldArray.includes(element)) {
+                additions.push(element);
+            }
+        });
+
+        oldArray.forEach(element => {
+            if (!newArray.includes(element)) {
+                subtractions.push(element);
+            }
+        });
+
+        return {additions, subtractions}
+    }
+
     static initEmail() {
         BusEmailer.transporter = nodemailer.createTransport({
          service: config.service,
@@ -72,8 +90,6 @@ class BusEmailer extends Module {
             let shouldUpdate = (mailData.svcsWithNWABs.join('') !== previousData.svcsWithNWABs.join('')) ||
                                 (mailData.svcsWithBendies.join('') !== previousData.svcsWithBendies.join(''));
 
-            previousData = mailData;
-
             if (shouldUpdate) {
                 let emailBody =
 `
@@ -81,11 +97,16 @@ class BusEmailer extends Module {
 
 <p>Services with NWABS (Fake NWABs included): </p>
 <code>${mailData.svcsWithNWABs.join(', ')}</code>
+<p>Additions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithNWABs, mailData.svcsWithNWABs).additions.join(', ')}</code></p>
+<p>subtractions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithNWABs, mailData.svcsWithNWABs).subtractions.join(', ')}</code></p>
 <br>
 <br>
 
 <p>Services with bendies (Wifi buses on 10 included): </p>
 <code>${mailData.svcsWithBendies.join(', ')}</code>
+<p>Additions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).additions.join(', ')}</code></p>
+<p>subtractions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).subtractions.join(', ')}</code></p>
+
 `;
 
                 config.subscribers.forEach(email => {
@@ -94,6 +115,8 @@ class BusEmailer extends Module {
                     console.log('BusEmailer: sent mail to', email)
                 });
             }
+
+            previousData = mailData;
         }, 1000 * 60); // 1000ms = 1s; 1s * 60 = 1min;
     }
 
