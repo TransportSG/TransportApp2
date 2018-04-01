@@ -4,6 +4,7 @@ const BusSearcherRouter = require('../../application/routes/BusSearcherRouter');
 const BusTimings = require('../BusTimings/BusTimings');
 
 const config = require('./bus-email-config.json');
+const depotData = require('../../application/routes/bus-depots.json');
 
 let previousData = {
     svcsWithNWABs: [],
@@ -29,7 +30,9 @@ class BusEmailer extends Module {
         let svcsWithNWABs = BusEmailer.getServiceList(nwabBuses);
         let svcsWithBendies = BusEmailer.getServiceList(bendyBuses);
 
-        svcsWithNWABs = svcsWithNWABs.filter(svc => !svc.endsWith('M'));
+        svcsWithNWABs = svcsWithNWABs.filter(svc => !svc.endsWith('M')).filter(svc =>
+            !depotData.LYDEP.includes(parseInt(svc).toString()) && !depotData.BUDEP.includes(parseInt(svc).toString())
+        );
 
         return {svcsWithNWABs, svcsWithBendies};
     }
@@ -48,6 +51,10 @@ class BusEmailer extends Module {
         BusEmailer.transporter.sendMail({
             from, to, subject, html
         }, function (err, info) {
+           if (err)
+             console.log(err)
+           else
+             console.log(info);
         });
     }
 
