@@ -19,6 +19,7 @@
     "express": "^4.16.2",
     "jsdom": "^11.5.1",
     "mongoose": "^4.13.7",
+    "nodemailer": "^4.6.4",
     "pug": "^2.0.0-rc.4",
     "request": "^2.83.0",
     "timed-cache": "^1.1.0"
