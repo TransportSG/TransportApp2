@@ -1,6 +1,6 @@
 function loadBuses() {
     $.ajax({
-        url: '/timings/search',
+        url: '/bus/search',
         method: 'POST',
         data: {
             query: $('#input').value
