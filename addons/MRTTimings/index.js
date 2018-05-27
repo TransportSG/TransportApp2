@@ -92,8 +92,6 @@ class MRTTimings {
             trainTimings[line][destination].push(timing.timeToArrival);
         });
 
-        console.log(JSON.stringify(trainTimings));
-
         return trainTimings;
     }
 
