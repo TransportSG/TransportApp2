@@ -11,6 +11,16 @@ block css
 
 block scripts
     script(src='/static/scripts/mrt-timings.js' async)
+    script=`let stationName = '${stationName}';`
+    script.
+        window.onload = () => {
+            let options = document.querySelectorAll('#mrt-stations > option');
+            options.forEach(option => {
+                if (option.textContent === stationName) {
+                    option.selected = true;
+                }
+            });
+        }
 
 block header
     img#page-icon(src='/static/images/bus-stop.svg')
