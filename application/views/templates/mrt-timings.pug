@@ -1,15 +1,16 @@
-for trainsetDirection in timings
-    div.train-timing
-        div(class=trainsetDirection.trainLine.toLowerCase() + ' train-line-container')
-            span.train-line=trainsetDirection.trainLine
-        div.miniEDS
-            div.edsText
-                span.towards Towards
-                a(href='/mrt/timings/' + trainsetDirection.timings[0].destination).destination=' ' + trainsetDirection.timings[0].destination
-        div.timingsContainer
-            for train in trainsetDirection.timings
-                div.timingContainer
-                    if train.timeToArrival === 0
-                        span.timeToArr Arr
-                    else
-                        span.timeToArrMin=train.timeToArrival
+for trainLine in Object.keys(timings)
+    -let lineTimings = timings[trainLine];
+    for destination in Object.keys(lineTimings)
+        -let destinationTimings = lineTimings[destination];
+
+        div.train-timing
+            div(class=trainLine.toLowerCase() + ' train-line-container')
+                span.train-line=trainLine
+            div.miniEDS
+                div.edsText
+                    span.towards Towards
+                    a(href='/mrt/timings/' + destination).destination=' ' + destination
+            div.timingsContainer
+                for train in destinationTimings
+                    div.timingContainer
+                        span.timeToArrMin=train
