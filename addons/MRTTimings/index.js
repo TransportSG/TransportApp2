@@ -47,34 +47,54 @@ class MRTTimings {
         var timingInfo = [];
 
         contents.forEach(data => {
-            var finalData = {
-                trainLine: data.line,
-                timings: Array.prototype.map.call(data.timingRow, (trainTiming, i) => {
-                    if (trainTiming.textContent === 'N/A') return null;
-                    if (stationName === 'Dhoby Ghaut' && data.line === 'CCL') data.directionRow[i].textContent = 'HarbourFront';
-                    if (data.directionRow[i].textContent === 'Do not board') return null;
-                    if (data.directionRow[i].textContent === 'HabourFront') data.directionRow[i].textContent = 'HarbourFront';
+            let trainLine = data.line;
+            let timingSet = Array.prototype.map.call(data.timingRow, (trainTiming, i) => {
+                let rawTiming = trainTiming.textContent;
+                let destination = data.directionRow[i].textContent;
 
-                    return {
-                        destination: data.directionRow[i].textContent,
-                        timeToArrival: trainTiming.textContent.match(/(\d+)/)[0]
-                    };
-                }).filter(Boolean).sort((a, b) => a.timeToArrival - b.timeToArrival).filter((e, i, a) => {
-                    var foundIndex = -1;
-                    for (var j = 0; j < a.length; j++) {
-                        if (a[j].timeToArrival === e.timeToArrival) {
-                            if (foundIndex === j) return false;
-                            foundIndex = i;
-                        }
+                if (rawTiming === 'N/A') return null;
+                if (destination === 'Do not board') return null;
+
+                // FIX: Page reports CCL trains at CDBG to terminate at CDBG, not CHBF
+                if (stationName === 'Dhoby Ghaut' && trainLine === 'CCL') destination = 'HarbourFront';
+
+                let parsedTiming = rawTiming.match(/(\d+)/)[0];
+                if (parsedTiming === '1') parsedTiming = 'Arr';
+
+                return {
+                    trainLine, destination,
+                    timeToArrival: parsedTiming
+                }
+            });
+
+            timingSet.filter(Boolean).filter((timing, i, a) => {
+                var foundIndex = -1;
+                for (var j = 0; j < a.length; j++) {
+                    if (a[j].timeToArrival === timing.timeToArrival) {
+                        if (foundIndex === j) return false;
+                        foundIndex = i;
                     }
-                    return true;
-                })
-            };
-            if (finalData.timings.length > 0)
-                timingInfo.push(finalData);
+                }
+                return true;
+            }).forEach(timing => timingInfo.push(timing));
         });
 
-        return timingInfo;
+
+
+        let trainTimings = {};
+
+        timingInfo.forEach(timing => {
+            let line = timing.trainLine;
+            let destination = timing.destination;
+            if (!(line in trainTimings)) trainTimings[line] = {};
+            if (!(destination in trainTimings[line])) trainTimings[line][destination] = [];
+
+            trainTimings[line][destination].push(timing.timeToArrival);
+        });
+
+        console.log(JSON.stringify(trainTimings));
+
+        return trainTimings;
     }
 
     static getStationTimings(stationName, callback) {
