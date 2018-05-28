@@ -9,20 +9,26 @@ block css
 block content
     div.main-content
         div.feature
-            img(src='/static/images/bus_timings.svg')
-            span Bus Timings
+            a
+                img(src='/static/images/bus_timings.svg')
+                span Bus Timings
         div.feature
-            img(src='/static/images/nearby_bus_stops.svg')
-            span Nearby Bus Stops
+            a(href='/nearby')
+                img(src='/static/images/nearby_bus_stops.svg')
+                span Nearby Bus Stops
         div.feature
-            img(src='/static/images/nearby_nwabs.svg')
-            span Nearby NWABs
+            a(href='/nearby/nwabs')
+                img(src='/static/images/nearby_nwabs.svg')
+                span Nearby NWABs
         div.feature
-            img(src='/static/images/mrt_timings.svg')
-            span MRT Timings
+            a(href='/mrt/timings')
+                img(src='/static/images/mrt_timings.svg')
+                span MRT Timings
         div.feature
-            img(src='/static/images/general_search.svg')
-            span General Search
+            a
+                img(src='/static/images/general_search.svg')
+                span General Search
         div.feature
-            img(src='/static/images/about_this_site.svg')
-            span About This Site
+            a(href='https://bus.transportsg.me')
+                img(src='/static/images/about_this_site.svg')
+                span Bus Lookup

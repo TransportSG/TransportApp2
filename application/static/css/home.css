@@ -82,6 +82,9 @@
     border: 1vw solid #2e2e2e;
     border-radius: 15%;
 
+}
+
+.feature a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,7 +92,7 @@
     flex-direction: column;
 }
 
-.feature > span {
+.feature span {
     text-align: center;
     margin-top: -1.5vw;
 }
