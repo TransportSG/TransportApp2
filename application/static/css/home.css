@@ -81,10 +81,7 @@
     background: #424242;
     border: 1vw solid #2e2e2e;
     border-radius: 15%;
-
-}
-
-.feature a {
+    
     display: flex;
     align-items: center;
     justify-content: center;
