@@ -52,7 +52,7 @@ class MRTTimings {
                 let rawTiming = trainTiming.textContent;
                 let destination = data.directionRow[i].textContent;
 
-                if (rawTiming === 'N/A') return null;
+                if (rawTiming.startsWith('N/A')) return null;
                 if (destination === 'Do not board') return null;
 
                 // FIX: Page reports CCL trains at CDBG to terminate at CDBG, not CHBF
