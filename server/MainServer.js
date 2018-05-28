@@ -86,6 +86,9 @@ class MainServer extends Module {
         expressApp.get('/offline', (req, res) => {
             res.render('offline');
         });
+        expressApp.get('/serviceworker.js', (req, res) => {
+            res.sendFile(path.join(__dirname, '../application/static/scripts/serviceworker.js'));
+        });
 
 
         BusStopTimingsRouter.init();
