@@ -1,0 +1,20 @@
+{
+    "name": "TransportSG",
+    "short_name": "TransportSG",
+    "start_url": "/",
+    "background_color": "#1e1e1e",
+    "theme_color": "#1e1e1e",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "description": "A Transporation App",
+    "icons": [
+        {
+            "src": "/static/images/favicon.png",
+            "sizes": "2048x2048",
+            "type": "image/png"
+        }
+    ],
+    "related_applications": [
+
+    ]
+}

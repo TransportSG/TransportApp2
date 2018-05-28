@@ -2,6 +2,7 @@ let cacheName = 'transportsg';
 
 let cachedURLs = [
     '/',
+    '/manifest.webmanifest',
     '/static/css/base-style.css',
     '/static/css/home.css',
     '/static/css/offline.css',
