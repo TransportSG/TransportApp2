@@ -3,19 +3,26 @@ extends layout
 block header
     span#title TransportSG
 
+block css
+    link(rel='stylesheet' href='/static/css/home.css')
+
 block content
-    div
-        h1 This site is still in beta..
-        p Would you like to go to the stable version?
-        a(href='https://transportsg.me') Click here!
-        br
-        p Current features:
-        ul
-            ol
-                a(href='/timings/22009') Timings for Boon Lay Int
-            ol
-                a(href='/mrt/timings') MRT Timings
-            ol
-                a(href='/nearby') Nearby Bus Stops
-            ol
-                a(href='/nearby/nwabs') Nearby NWABs
+    div.main-content
+        div.feature
+            img(src='/static/images/bus_timings.svg')
+            span Bus Timings
+        div.feature
+            img(src='/static/images/nearby_bus_stops.svg')
+            span Nearby Bus Stops
+        div.feature
+            img(src='/static/images/nearby_nwabs.svg')
+            span Nearby NWABs
+        div.feature
+            img(src='/static/images/mrt_timings.svg')
+            span MRT Timings
+        div.feature
+            img(src='/static/images/general_search.svg')
+            span General Search
+        div.feature
+            img(src='/static/images/about_this_site.svg')
+            span About This Site
