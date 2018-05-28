@@ -1,0 +1,8 @@
+#content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - (100vw + 100vw) * 0.04);
+
+    font-size: calc((100vw + 100vw) * 0.01);
+}

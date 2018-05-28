@@ -83,6 +83,10 @@ class MainServer extends Module {
 
         expressApp.get('/eds/:svc', EDSRouter.svc);
 
+        expressApp.get('/offline', (req, res) => {
+            res.render('offline');
+        });
+
 
         BusStopTimingsRouter.init();
         NearbyBusStopsRouter.init();
