@@ -17,6 +17,7 @@
         .main-content {
             grid-template-columns: repeat(2, 25vh);
             grid-gap: 2vh;
+            align-content: center;
         }
 
         .feature {
@@ -43,25 +44,27 @@
 }
 
 @media (orientation: landscape) {
-    @media (min-height: 64vw) {
+    @media (min-height: 48vw) {
 
         .main-content {
-            grid-template-columns: repeat(3, 28vw);
+            grid-template-columns: repeat(3, 19vw);
             grid-gap: 2vw;
+            align-content: center;
         }
 
         .feature {
-            width: 23vw;
-            height: 23vw;
+            width: 17vw;
+            height: 17vw;
 
-            font-size: 2.5vw;
+            font-size: 2vw;
         }
     }
 
-    @media (max-height: 64vw) {
+    @media (max-height: 48vw) {
         .main-content {
-            grid-template-columns: repeat(6, 14vw);
+            grid-template-columns: repeat(6, 15vw);
             grid-gap: 2vw;
+            align-content: center;
         }
 
         .feature {
