@@ -69,6 +69,8 @@ class MainServer extends Module {
         expressApp.post('/bus/search', BusSearcherRouter.search);
 
         expressApp.get('/timings/:busStopCode', BusStopTimingsRouter.index);
+        expressApp.get('/bookmarks', BusStopTimingsRouter.getBookmarks);
+        expressApp.get('/render-bookmarks', BusStopTimingsRouter.renderBookmarks);
 
         expressApp.get('/nearby', NearbyBusStopsRouter.index);
         expressApp.get('/nearby/geo', NearbyBusStopsRouter.geoSearch);
@@ -92,7 +94,6 @@ class MainServer extends Module {
         expressApp.get('/manifest.webmanifest', (req, res) => {
             res.sendFile(path.join(__dirname, '../application/static/manifest.webmanifest'));
         });
-
 
         BusStopTimingsRouter.init();
         NearbyBusStopsRouter.init();

@@ -1,0 +1,15 @@
+for busStopCode in Object.keys(data)
+    -let busStop = data[busStopCode]
+    div.busStopContainer
+        a(href='/timings/' + busStop.busStopCode).busStopLink
+            div.routeInfo
+                span.busStopRoad=busStop.roadName
+                span.busStopName=busStop.busStopCode + ' ' + busStop.busStopName
+            div.servicePeek
+                div.services
+                    div.col
+                        each service in (busStop.busServices.slice(5, 10))
+                            span(class='busService ' + service.operatorCss)=service.fullService
+                    div.col
+                        each service in (busStop.busServices.slice(0, 5))
+                            span(class='busService ' + service.operatorCss)=service.fullService

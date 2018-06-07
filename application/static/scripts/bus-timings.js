@@ -35,7 +35,7 @@ function setBookmarked(state) {
 
 function isBookmarked(cb) {
     idb.open('bookmarks', 1).then(function(db) {
-        var tx = db.transaction(['bus-stops'], 'readwrite');
+        var tx = db.transaction(['bus-stops'], 'readonly');
         var store = tx.objectStore('bus-stops');
 
         store.get(currentBusStop).then(state => {

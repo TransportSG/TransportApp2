@@ -4,6 +4,8 @@ const BusStopsRepository = require('../../database/BusStopsRepository');
 const BusServiceRepository = require('../../database/BusServiceRepository');
 const DatabaseConnectionManager = require('../../database/DatabaseConnectionManager');
 const BusTimingsUtils = require('../../utils/BusTimingsUtils');
+const queryString = require('querystring');
+const url = require('url');
 
 var timingDiff = (a, b) => {
     var diff = new Date(Math.abs(a - b));
@@ -44,6 +46,29 @@ class BusStopTimingsRouter extends Router {
                     busServiceData: servicesData
                 });
             });
+        });
+    }
+
+    static getBookmarks(req, res) {
+        res.render('bus-stop-timings/bookmark-list');
+    }
+
+    static renderBookmarks(req, res) {
+        let busStops = queryString.parse(url.parse(req.url).query)['bus-stops'].split(',');
+
+        let promises = [];
+        let data = {};
+        busStops.forEach(busStopCode => {
+            promises.push(new Promise((resolve, reject) => {
+                BusStopTimingsRouter.busStops.findOne(busStopCode, (err, busStop) => {
+                    data[busStopCode] = busStop;
+                    resolve();
+                });
+            }))
+        });
+
+        Promise.all(promises).then(() => {
+            res.render('bus-stop-timings/bookmarks-list-rendered', {data});
         });
     }
 }
