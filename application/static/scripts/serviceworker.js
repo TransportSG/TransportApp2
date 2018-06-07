@@ -20,6 +20,8 @@ let cachedURLs = [
     '/static/images/nearby_nwabs.svg',
     '/static/images/non-wheelchair.svg',
     '/static/images/wheelchair.svg',
+    '/static/images/bookmark-empty.svg',
+    '/static/images/bookmark-filled.svg',
     '/static/scripts/base.js',
     '/static/scripts/helper.js',
     '/serviceworker.js',

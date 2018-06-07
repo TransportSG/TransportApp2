@@ -6,8 +6,13 @@ block head
 block css
     link(rel='stylesheet' href='/static/css/timings.css')
 
+block scripts
+    script(src='/static/scripts/bus-timings.js')
+    script(src='/static/scripts/idb.js')
+
 block header
     img#page-icon(src='/static/images/bus-stop.svg')
     span#title=busStopCode + ' ' + busStopName
+    img#bookmark-status(src='/static/images/bookmark-empty.svg')
 block content
     include ../templates/bus-timings
