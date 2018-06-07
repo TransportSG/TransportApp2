@@ -38,9 +38,14 @@ class BusEmailer extends Module {
             BusSearcherRouter.filterByType(nwabBuses, 'DD'), BusSearcherRouter.getSvcsFromInput({depots: ['HGDEP']})
         );
 
-        tridents = BusEmailer.getServiceList(tridents);
+        let SLBPDownsize = BusSearcherRouter.filterServices(
+            BusSearcherRouter.filterByType(timingsCache, 'SD'), BusSearcherRouter.getSvcsFromInput({depots: ['SLBP']})
+        );
 
-        return {svcsWithNWABs, svcsWithBendies, tridents};
+        tridents = BusEmailer.getServiceList(tridents);
+        SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize)
+
+        return {svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize};
     }
 
     static getArrayDiff(oldArray, newArray) {
@@ -103,6 +108,9 @@ class BusEmailer extends Module {
 
 <p>Trident Deployments</p>
 <code>${mailData.tridents.join(', ')}</code>
+
+<p>SLBP SDs</p>
+<code>${mailData.SLBPDownsize.join(', ')}</code>
 
 <p>Services with NWABS (Fake NWABs included): </p>
 <code>${mailData.svcsWithNWABs.join(', ')}</code>
