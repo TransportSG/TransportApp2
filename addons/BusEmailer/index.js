@@ -34,7 +34,13 @@ class BusEmailer extends Module {
             !depotData.LYDEP.includes(parseInt(svc).toString()) && !depotData.BUDEP.includes(parseInt(svc).toString())
         );
 
-        return {svcsWithNWABs, svcsWithBendies};
+        let tridents = BusSearcherRouter.filterServices(
+            BusSearcherRouter.filterByType(nwabBuses, 'DD'), BusSearcherRouter.getSvcsFromInput({depots: ['HGDEP']})
+        );
+
+        tridents = BusEmailer.getServiceList(tridents);
+
+        return {svcsWithNWABs, svcsWithBendies, tridents};
     }
 
     static getArrayDiff(oldArray, newArray) {
@@ -84,7 +90,7 @@ class BusEmailer extends Module {
         console.log('BusEmailer started');
         BusEmailer.initEmail();
 
-        setInterval(() => {
+        let run = () => {
             let mailData = BusEmailer.queryFunction();
 
             let shouldUpdate = (mailData.svcsWithNWABs.join('') !== previousData.svcsWithNWABs.join('')) ||
@@ -94,6 +100,9 @@ class BusEmailer extends Module {
                 let emailBody =
 `
 <h1>Bus update as of ${new Date().toString()}</h1>
+
+<p>Trident Deployments</p>
+<code>${mailData.tridents.join(', ')}</code>
 
 <p>Services with NWABS (Fake NWABs included): </p>
 <code>${mailData.svcsWithNWABs.join(', ')}</code>
@@ -106,7 +115,6 @@ class BusEmailer extends Module {
 <code>${mailData.svcsWithBendies.join(', ')}</code>
 <p>Additions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).additions.join(', ')}</code></p>
 <p>subtractions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).subtractions.join(', ')}</code></p>
-
 `;
 
                 config.subscribers.forEach(email => {
@@ -117,7 +125,10 @@ class BusEmailer extends Module {
             }
 
             previousData = mailData;
-        }, 1000 * 60); // 1000ms = 1s; 1s * 60 = 1min;
+        };
+
+        setInterval(run, 1000 * 60); // 1000ms = 1s; 1s * 60 = 1min;
+        setTimeout(run, 5000);
     }
 
 }
