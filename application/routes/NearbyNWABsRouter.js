@@ -25,6 +25,8 @@ class NearbyNWABsRouter extends Router {
     }
 
     static getNWABsForBusStop(busStopTimings) {
+        if (!busStopTimings) return [];
+        
         return busStopTimings.filter(timings => {
             return !!timings.timings.filter(timing => !timing.isWAB).length;
         }).map(timings => {

@@ -2,7 +2,7 @@ let checkboxes = {};
 
 function loadBuses() {
     if (!$('#input').value.trim()) return;
-    
+
     $.ajax({
         url: '/bus/search',
         method: 'POST',
