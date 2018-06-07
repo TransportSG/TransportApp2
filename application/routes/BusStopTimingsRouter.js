@@ -54,7 +54,7 @@ class BusStopTimingsRouter extends Router {
     }
 
     static renderBookmarks(req, res) {
-        let busStops = queryString.parse(url.parse(req.url).query)['bus-stops'].split(',');
+        let busStops = queryString.parse(url.parse(req.url).query)['bus-stops'].split(',').filter(Boolean);
 
         let promises = [];
         let data = {};
