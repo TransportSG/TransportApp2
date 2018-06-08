@@ -6,6 +6,8 @@ const BusTimings = require('../BusTimings/BusTimings');
 const config = require('./bus-email-config.json');
 const depotData = require('../../application/routes/bus-depots.json');
 
+const cameoSorter = require('./cameo_sorter');
+
 let previousData = {
     svcsWithNWABs: [],
     svcsWithBendies: []
@@ -21,7 +23,7 @@ class BusEmailer extends Module {
         return flattened.filter((e, i, a) => a.indexOf(e) === i).sort();
     }
 
-    static queryFunction() {
+    static queryFunction(cb) {
         let timingsCache = BusTimings.getTimings();
 
         let nwabBuses = BusSearcherRouter.filterByNWAB(timingsCache, 'nwab');
@@ -43,9 +45,21 @@ class BusEmailer extends Module {
         );
 
         tridents = BusEmailer.getServiceList(tridents);
-        SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize)
+        SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize);
+        cameoSorter.readData(data => {
+            if (new Date() - data.last > 86400000)
+                data.push([]);
 
-        return {svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize};
+            let changed = SLBPDownsize.map(svc => cameoSorter.addServiceToday(data, svc)).filter(svc=>svc);
+            
+            if (changed.length) {
+                cameoSorter.writeData(data);
+            }
+
+            let freq = cameoSorter.tabulateFrequency(data);
+            let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(svc));
+            cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results});
+        });
     }
 
     static getArrayDiff(oldArray, newArray) {
@@ -96,13 +110,12 @@ class BusEmailer extends Module {
         BusEmailer.initEmail();
 
         let run = () => {
-            let mailData = BusEmailer.queryFunction();
+            BusEmailer.queryFunction(mailData => {
+                let shouldUpdate = (mailData.svcsWithNWABs.join('') !== previousData.svcsWithNWABs.join('')) ||
+                                    (mailData.svcsWithBendies.join('') !== previousData.svcsWithBendies.join(''));
 
-            let shouldUpdate = (mailData.svcsWithNWABs.join('') !== previousData.svcsWithNWABs.join('')) ||
-                                (mailData.svcsWithBendies.join('') !== previousData.svcsWithBendies.join(''));
-
-            if (shouldUpdate) {
-                let emailBody =
+                if (shouldUpdate) {
+                    let emailBody =
 `
 <h1>Bus update as of ${new Date().toString()}</h1>
 
@@ -125,14 +138,15 @@ class BusEmailer extends Module {
 <p>subtractions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).subtractions.join(', ')}</code></p>
 `;
 
-                config.subscribers.forEach(email => {
-                    BusEmailer.sendMail(email, 'sbs9642p@gmail.com', 'Bus timing update', emailBody);
+                    config.subscribers.forEach(email => {
+                        BusEmailer.sendMail(email, 'sbs9642p@gmail.com', 'Bus timing update', emailBody);
 
-                    console.log('BusEmailer: sent mail to', email)
-                });
-            }
+                        console.log('BusEmailer: sent mail to', email)
+                    });
+                }
 
-            previousData = mailData;
+                previousData = mailData;
+            });
         };
 
         setInterval(run, 1000 * 60); // 1000ms = 1s; 1s * 60 = 1min;
