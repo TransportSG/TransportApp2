@@ -57,7 +57,7 @@ class BusEmailer extends Module {
             }
 
             let freq = cameoSorter.tabulateFrequency(data);
-            let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(svc));
+            let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(freq, svc));
             cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results});
         });
     }
@@ -122,6 +122,9 @@ class BusEmailer extends Module {
 <p>Trident Deployments</p>
 <code>${mailData.tridents.join(', ')}</code>
 
+<p>SL SD</p>
+<code>${mailData.SLBPDownsize.join(', ')}</code>
+
 <p>Services with NWABS (Fake NWABs included): </p>
 <code>${mailData.svcsWithNWABs.join(', ')}</code>
 <p>Additions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithNWABs, mailData.svcsWithNWABs).additions.join(', ')}</code></p>
@@ -133,9 +136,6 @@ class BusEmailer extends Module {
 <code>${mailData.svcsWithBendies.join(', ')}</code>
 <p>Additions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).additions.join(', ')}</code></p>
 <p>subtractions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).subtractions.join(', ')}</code></p>
-
-<p>SLBP SDs</p>
-<code>${mailData.SLBPDownsize.join(', ')}</code>
 `;
 
                     config.subscribers.forEach(email => {
