@@ -47,12 +47,12 @@ class BusEmailer extends Module {
         tridents = BusEmailer.getServiceList(tridents);
         SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize);
         cameoSorter.readData(data => {
-            if (new Date() - data.last > 86400000)
+            if (+new Date() - data.last > 86400000)
                 data.push([]);
 
             let changed = SLBPDownsize.map(svc => cameoSorter.addServiceToday(data, svc)).filter(svc=>svc);
 
-            if (changed.length) {
+            if (changed.length || +new Date() - data.last > 86400000) {
                 cameoSorter.writeData(data);
             }
 
