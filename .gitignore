@@ -2,3 +2,5 @@
 *-config.json
 .DS_Store
 /data.json
+/addons/TensorFlow-py/tf_files
+/application/routes/images

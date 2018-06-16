@@ -16,6 +16,7 @@ const MRTTimingsRouter = require('../application/routes/MRTTimingsRouter');
 const NearbyNWABsRouter = require('../application/routes/NearbyNWABsRouter');
 const EDSRouter = require('../application/routes/EDSRouter');
 const BusSearcherRouter = require('../application/routes/BusSearcherRouter');
+const BusMatcherRouter = require('../application/routes/BusMatcherRouter');
 
 const serverConfig = require('./server-config.json');
 
@@ -84,6 +85,9 @@ class MainServer extends Module {
         expressApp.get('/nearby/nwabs/geo', NearbyNWABsRouter.doLookup);
 
         expressApp.get('/eds/:svc', EDSRouter.svc);
+
+        expressApp.post('/bus/matcher', BusMatcherRouter.uploader, BusMatcherRouter.upload);
+        expressApp.get('/bus/matcher', BusMatcherRouter.index);
 
         expressApp.get('/offline', (req, res) => {
             res.render('offline');

@@ -1,0 +1,16 @@
+extends ../layout.pug
+
+block head
+    title Bus Matcher
+
+block css
+    //link(rel='stylesheet' href='/static/css/timings.css')
+
+block header
+    img#magnifying-glass(src='/static/images/magnifying-glass.svg')
+    span#title Bus Matcher
+
+block content
+    form(action='/bus/matcher' method='POST' enctype='multipart/form-data')
+        input(type='file' name='image')
+        input(type='submit')

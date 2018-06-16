@@ -40,8 +40,8 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', event => {
     console.log('[TransportSG]: fetching resource', event.request.url);
-
-    event.respondWith(fetchWithCache(event.request));
+    if (event.request.method === 'GET')
+        event.respondWith(fetchWithCache(event.request));
 });
 
 function fetchWithCache(request) {
