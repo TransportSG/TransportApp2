@@ -24,7 +24,7 @@ class BusEmailer extends Module {
     }
 
     static queryFunction(cb) {
-        let timingsCache = BusTimings.getTimings();
+        let timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
         let nwabBuses = BusSearcherRouter.filterByNWAB(timingsCache, 'nwab');
         let bendyBuses = BusSearcherRouter.filterByType(timingsCache, 'BD');
