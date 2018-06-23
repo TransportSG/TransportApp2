@@ -149,7 +149,7 @@ class BusEmailer extends Module {
             });
         };
 
-        setInterval(run, 1000 * 60); // 1000ms = 1s; 1s * 60 = 1min;
+        setInterval(run, 1000 * 60 * 3); // 1000ms = 1s; 1s * 60 = 1min; 1min * 3 = 3min;
         setTimeout(run, 5000);
     }
 
