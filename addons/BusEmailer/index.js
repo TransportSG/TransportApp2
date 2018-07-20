@@ -44,8 +44,19 @@ class BusEmailer extends Module {
             BusSearcherRouter.filterByType(timingsCache, 'SD'), BusSearcherRouter.getSvcsFromInput({depots: ['SLBP']})
         );
 
+        let BUDEPDownsize = BusSearcherRouter.filterServices(
+            BusSearcherRouter.filterByType(timingsCache, 'SD'), BusSearcherRouter.getSvcsFromInput({services: ['78', '79', '98', '143']})
+        );
+
+        let BUDEPUpsize = BusSearcherRouter.filterServices(
+            BusSearcherRouter.filterByType(timingsCache, 'DD'), BusSearcherRouter.getSvcsFromInput({services: ['941', '947', '990']})
+        );
+
         tridents = BusEmailer.getServiceList(tridents);
         SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize);
+
+        let BUDEPFunfair = BusEmailer.getServiceList(BUDEPDownsize).concat(BusEmailer.getServiceList(BUDEPUpsize));
+
         cameoSorter.readData(data => {
             if (+new Date() - data.last > 86400000)
                 data.push([]);
@@ -58,7 +69,7 @@ class BusEmailer extends Module {
 
             let freq = cameoSorter.tabulateFrequency(data);
             let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(freq, svc));
-            cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results});
+            cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair});
         });
     }
 
@@ -122,8 +133,11 @@ class BusEmailer extends Module {
 <p>Trident Deployments</p>
 <code>${mailData.tridents.join(', ')}</code>
 
-<p>SL SD</p>
-<code>${mailData.SLBPDownsize.join(', ')}</code>
+${mailData.SLBPDownsize.length > 0 ? `<p>SL SD</p>
+<code>${mailData.SLBPDownsize.join(', ')}</code>` : ''}
+
+${mailData.BUDEPFunfair.length > 0 ? `<p>BUDEP Funfair</p>
+<code>${mailData.BUDEPFunfair.join(', ')}</code>` : ''}
 
 <p>Services with NWABS (Fake NWABs included): </p>
 <code>${mailData.svcsWithNWABs.join(', ')}</code>
