@@ -137,7 +137,7 @@ class BusSearcherRouter extends Router {
             return;
         }
 
-        let timingsCache = BusTimings.getTimings();
+        let timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
         let parsedData = BusSearcherRouter.parseData(req.body.query);
         let possibleSvcs = BusSearcherRouter.getSvcsFromInput(parsedData);
