@@ -47,9 +47,10 @@ class BusEmailer extends Module {
         let BUDEPDownsize = BusSearcherRouter.filterServices(
             BusSearcherRouter.filterByType(timingsCache, 'SD'), BusSearcherRouter.getSvcsFromInput({services: ['78', '79', '98', '143']})
         );
+        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
         let BUDEPUpsize = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'DD'), BusSearcherRouter.getSvcsFromInput({services: ['941', '947', '990']})
+            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['941', '947', '990']
         );
 
         tridents = BusEmailer.getServiceList(tridents);
