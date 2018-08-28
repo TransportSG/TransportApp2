@@ -58,13 +58,13 @@ class BusEmailer extends Module {
 
         let BUDEPFunfair = BusEmailer.getServiceList(BUDEPDownsize).concat(BusEmailer.getServiceList(BUDEPUpsize));
 
-        cameoSorter.readData(data => {
-            if (+new Date() - data.last > 86400000)
+        cameoSorter.readData((data, last) => {
+            if (+new Date() - last > 86400000)
                 data.push([]);
 
             let changed = SLBPDownsize.map(svc => cameoSorter.addServiceToday(data, svc)).filter(svc=>svc);
 
-            if (changed.length || +new Date() - data.last > 86400000) {
+            if (changed.length || +new Date() - last > 86400000) {
                 cameoSorter.writeData(data);
             }
 

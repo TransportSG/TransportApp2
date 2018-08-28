@@ -2,7 +2,8 @@ let fs = require('fs');
 
 function readData(cb) {
     fs.readFile('./data.json', (err, data) => {
-        cb(JSON.parse(data.toString()).data);
+        let parsed = JSON.parse(data.toString());
+        cb(parsed.data, parsed.last);
     });
 }
 
