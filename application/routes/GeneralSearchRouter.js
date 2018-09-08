@@ -52,13 +52,13 @@ class GeneralSearchRouter {
               service.interchangeNames = [data[0].busStopName, service.loopPoint];
             }
 
-            
             res.render('general-search/results', {
               busStops, service
             });
           });
-
-        }
+        } else res.render('general-search/results', {
+          busStops, service
+        });
       });
     });
   }

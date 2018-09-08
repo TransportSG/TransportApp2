@@ -50,7 +50,7 @@
   color: #d2d2d2;
 }
 
-.service-details {
+.result-details {
   width: calc(95vw - 5vh);
   display: flex;
   align-items: left;
@@ -59,12 +59,12 @@
   margin-left: calc(1vw + 1vh);
 }
 
-.service-info {
+.result-info-top {
   color: #8f8f8f;
   font-size: calc(1.6vh + 0.9vw);
 }
 
-.service-dest {
+.result-info-bot {
   font-size: calc(2vh + 1.2vw);
   margin-top: calc(-0.4vh - 0.2vw);
 }
@@ -80,4 +80,23 @@
 }
 .gas {
     background-color: #d7832c;
+}
+
+.bus-stop-container {
+  width: 100vw;
+  display: flex;
+}
+
+.bus-stop-icon-container {
+  width: calc(5vw + 5vh);
+  height: calc(7vw + 7vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4547be;
+}
+
+.bus-stop-icon {
+  width: calc(3vw + 3vh);
+  height: calc(3vw + 3vh);
 }
