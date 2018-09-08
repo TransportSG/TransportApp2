@@ -17,6 +17,7 @@ const NearbyNWABsRouter = require('../application/routes/NearbyNWABsRouter');
 const EDSRouter = require('../application/routes/EDSRouter');
 const BusSearcherRouter = require('../application/routes/BusSearcherRouter');
 const BusMatcherRouter = require('../application/routes/BusMatcherRouter');
+const GeneralSearchRouter = require('../application/routes/GeneralSearchRouter');
 
 const serverConfig = require('./server-config.json');
 
@@ -89,6 +90,9 @@ class MainServer extends Module {
         expressApp.post('/bus/matcher', BusMatcherRouter.uploader, BusMatcherRouter.upload);
         expressApp.get('/bus/matcher', BusMatcherRouter.index);
 
+        expressApp.get('/search', GeneralSearchRouter.renderMain);
+        expressApp.post('/search', GeneralSearchRouter.search);
+
         expressApp.get('/offline', (req, res) => {
             res.render('offline');
         });
@@ -104,6 +108,7 @@ class MainServer extends Module {
         NearbyNWABsRouter.init();
         EDSRouter.init();
         BusSearcherRouter.init();
+        GeneralSearchRouter.init();
     }
 
 }

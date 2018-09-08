@@ -1,0 +1,19 @@
+extends ../layout.pug
+
+block head
+    title General Search
+
+block css
+    link(rel='stylesheet' href='/static/css/general-search.css')
+
+block scripts
+  script(src='/static/scripts/general-search.js' async)
+
+block header
+    img#magnifying-glass(src='/static/images/magnifying-glass.svg')
+    span#title='General Search'
+
+block content
+    div#searchbar
+        input#input
+    div#results
