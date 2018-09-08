@@ -9,9 +9,9 @@ if !!service
       span.result-info-bot=service.interchangeNames[0] + ' - ' + service.interchangeNames[1]
 
 for busStop in busStops
-  div.bus-stop-container.result
-    div.bus-stop-icon-container
-      img.bus-stop-icon(src='/static/images/bus-stop.svg')
-    div.result-details
-      span.result-info-top=busStop.roadName
-      span.result-info-bot=busStop.busStopCode + ' ' + busStop.busStopName
+    a(href='/timings/' + busStop.busStopCode).bus-stop-container.result
+      div.bus-stop-icon-container
+        img.bus-stop-icon(src='/static/images/bus-stop.svg')
+      div.result-details
+        span.result-info-top=busStop.roadName
+        span.result-info-bot=busStop.busStopCode + ' ' + busStop.busStopName
