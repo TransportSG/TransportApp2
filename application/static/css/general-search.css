@@ -51,6 +51,7 @@
 }
 
 .service-details {
+  width: calc(95vw - 5vh);
   display: flex;
   align-items: left;
   justify-content: center;
