@@ -38,9 +38,27 @@ class GeneralSearchRouter {
       ]
     }, (err, busStops) => {
       GeneralSearchRouter.busServices.find(search.toUpperCase(), (err, service) => {
-        res.render('general-search/results', {
-          busStops, service
-        });
+        if (!!service) {
+          service = JSON.parse(JSON.stringify(service));
+
+          Promise.all(service.interchanges.map(busStopCode => {
+            return GeneralSearchRouter.busStops.findWithPromise({busStopCode})
+          })).then(data => {
+            data = data.map(a=>a[0]);
+
+            service.interchangeNames = [data[0].busStopName, data[1].busStopName];
+
+            if (service.interchanges[0] == service.interchanges[1]) { // Loop svc
+              service.interchangeNames = [data[0].busStopName, service.loopPoint];
+            }
+
+            
+            res.render('general-search/results', {
+              busStops, service
+            });
+          });
+
+        }
       });
     });
   }

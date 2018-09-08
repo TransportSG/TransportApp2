@@ -35,6 +35,10 @@ class BusStopsRepository extends Repository {
         });
     }
 
+    findWithPromise(query) {
+      return this.BusStopsModel.find(query);
+    }
+
     create(data, callback) {
         new this.BusStopsModel(data).save(callback);
     }
