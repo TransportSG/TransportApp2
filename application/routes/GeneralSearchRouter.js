@@ -38,6 +38,9 @@ class GeneralSearchRouter {
       ]
     }, (err, busStops) => {
       GeneralSearchRouter.busServices.find(search.toUpperCase(), (err, service) => {
+        res.render('general-search/results', {
+          busStops, service
+        });
       });
     });
   }

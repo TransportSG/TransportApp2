@@ -1,0 +1,8 @@
+if !!service
+  div.service-container.result
+    div(class='service-number-container ' + service.operator.toLowerCase())
+      span.service-number=service.serviceNumber
+      span.service-variant=service.variant
+    div.service-details
+      span.service-info=service.routeType.slice(0, 1) + service.routeType.slice(1).toLowerCase() + ' Service ' + service.fullService
+      span.service-dest=A-B

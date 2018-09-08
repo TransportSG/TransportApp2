@@ -1,3 +1,8 @@
+@font-face {
+    font-family: FFMeta;
+    src: url(/static/fonts/ff-meta.otf);
+}
+
 #magnifying-glass {
   width: calc(2vw + 2vh);
   height: calc(2vw + 2vh);
@@ -27,4 +32,53 @@
 
 #results {
 
+}
+
+.service-container {
+  width: 100vw;
+  display: flex;
+}
+
+.service-number-container {
+  width: calc(5vw + 5vh);
+  height: calc(7vw + 7vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: calc(2.7vw + 2.7vh);
+  font-family: FFMeta;
+  top: calc(-.2vw - .2vh);
+  color: #d2d2d2;
+}
+
+.service-details {
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: calc(1vw + 1vh);
+}
+
+.service-info {
+  color: #8f8f8f;
+  font-size: calc(1.6vh + 0.9vw);
+}
+
+.service-dest {
+  font-size: calc(2vh + 1.2vw);
+  margin-top: calc(-0.4vh - 0.2vw);
+}
+
+.sbst {
+    background-color: #b845be;
+}
+.smrt {
+    background-color: #c63d3d;
+}
+.tts {
+    background-color: #4ebe45;
+}
+.gas {
+    background-color: #d7832c;
 }
