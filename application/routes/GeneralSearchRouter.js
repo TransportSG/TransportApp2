@@ -37,6 +37,31 @@ class GeneralSearchRouter {
         {roadName: new RegExp(search, 'i')}
       ]
     }, (err, busStops) => {
+
+      let busStopsByNameLength = {};
+      let finalBusStops = [];
+
+      busStops = busStops.sort((a, b) => {
+        return a.busStopName.length - b.busStopName.length;
+      });
+
+      busStops.forEach(busStop => {
+        let length = busStop.busStopName.length;
+        if (!busStopsByNameLength[length]) busStopsByNameLength[length] = [];
+        busStopsByNameLength[length].push(busStop);
+      })
+
+      Object.keys(busStopsByNameLength).forEach(lengthID => {
+        finalBusStops = finalBusStops.concat(busStopsByNameLength[lengthID].sort((a, b) => {
+          let aNumbers = (a.busStopName.match(/(\d+)/)[1] || 0)* 1;
+          let bNumbers = (b.busStopName.match(/(\d+)/)[1] || 0)* 1;
+
+          return aNumbers - bNumbers;
+        }));
+      });
+
+      busStops = finalBusStops;
+
       GeneralSearchRouter.busServices.find(search.toUpperCase(), (err, service) => {
         if (!!service) {
           service = JSON.parse(JSON.stringify(service));
