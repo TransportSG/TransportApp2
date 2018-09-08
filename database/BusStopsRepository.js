@@ -29,8 +29,10 @@ class BusStopsRepository extends Repository {
         });
     }
 
-    find(busStopCode, callback) {
-        this.findOne(busStopCode, callback);
+    find(query, callback) {
+        this.BusStopsModel.find(query, (err, busStops) => {
+            setTimeout(callback.bind(null, err, busStops));
+        });
     }
 
     create(data, callback) {

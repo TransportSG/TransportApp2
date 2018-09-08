@@ -15,7 +15,31 @@ class GeneralSearchRouter {
   }
 
   static search(req, res) {
-    
+    if (!req.body.search) {
+      res.status(400).json({
+        error: 'No search provided'
+      });
+      return;
+    }
+
+    let search = req.body.search;
+    if (!!search.match(/[^\w /-]/)) {
+      res.status(400).json({
+        error: 'Invalid search string'
+      });
+      return;
+    }
+
+    GeneralSearchRouter.busStops.find({
+      $or: [
+        {busStopCode: search},
+        {busStopName: new RegExp(search, 'i')},
+        {roadName: new RegExp(search, 'i')}
+      ]
+    }, (err, busStops) => {
+      GeneralSearchRouter.busServices.find(search.toUpperCase(), (err, service) => {
+      });
+    });
   }
 
 }

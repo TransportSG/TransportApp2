@@ -9,7 +9,7 @@ $('#input').on('input', () => {
       method: 'POST',
       data: {search}
     }, response => {
-      $('#results').innerHTML = response;
+      $('#results').innerHTML = response.error || response;
     });
   }, 1500);
 });
