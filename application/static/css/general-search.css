@@ -20,18 +20,16 @@
 #input {
   width: 80vw;
   height: calc(3vh + 3vw);
+
+  appearance: none;
   border: none;
   outline: none;
   border-radius: 3vh;
   text-align: center;
   font-size: calc(2vh + 3vw);
-  font-family: 'Bree Serif';
-  padding-bottom: 0.9vh;
+  font-family: BreeSerif;
+
   background-color: #e0e0e0;
-}
-
-#results {
-
 }
 
 .service-container {
