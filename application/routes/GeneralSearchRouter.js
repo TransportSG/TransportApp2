@@ -53,8 +53,8 @@ class GeneralSearchRouter {
 
       Object.keys(busStopsByNameLength).forEach(lengthID => {
         finalBusStops = finalBusStops.concat(busStopsByNameLength[lengthID].sort((a, b) => {
-          let aNumbers = (a.busStopName.match(/(\d+)/)[1] || 0)* 1;
-          let bNumbers = (b.busStopName.match(/(\d+)/)[1] || 0)* 1;
+          let aNumbers = ((a.busStopName.match(/(\d+)/)||[0,0])[1]) * 1;
+          let bNumbers = ((b.busStopName.match(/(\d+)/)||[0,0])[1]) * 1;
 
           return aNumbers - bNumbers;
         }));
