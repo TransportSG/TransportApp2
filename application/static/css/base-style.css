@@ -57,6 +57,5 @@ a, a:visited {
     text-align: center;
     margin-right: calc(1vw + 1vh);
     font-size: calc(1.5vh + 0.8vw);
-    margin-top: calc(-0.1vh - 0.05vw);
     text-align: right;
 }
