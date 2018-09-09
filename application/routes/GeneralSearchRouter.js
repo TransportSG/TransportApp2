@@ -62,23 +62,30 @@ class GeneralSearchRouter {
 
       busStops = finalBusStops;
 
-      GeneralSearchRouter.busServices.find(search.toUpperCase(), (err, service) => {
+      GeneralSearchRouter.busServices.findOne(search.toUpperCase(), 1, (err, service) => {
         if (!!service) {
-          service = JSON.parse(JSON.stringify(service));
 
-          Promise.all(service.interchanges.map(busStopCode => {
-            return GeneralSearchRouter.busStops.findWithPromise({busStopCode})
-          })).then(data => {
-            data = data.map(a=>a[0]);
+          GeneralSearchRouter.busServices.findOne(search.toUpperCase(), 2, (err, service2) => {
+              if (!service2) {
+                  service2 = {interchanges: service.interchanges};
+              }
+              service = JSON.parse(JSON.stringify(service));
+              let interchanges = [service.interchanges[0], service2.interchanges[0]];
 
-            service.interchangeNames = [data[0].busStopName, data[1].busStopName];
+              Promise.all(interchanges.map(busStopCode => {
+                return GeneralSearchRouter.busStops.findWithPromise({busStopCode})
+              })).then(data => {
+                data = data.map(a=>a[0]);
 
-            if (service.interchanges[0] == service.interchanges[1]) { // Loop svc
-              service.interchangeNames = [data[0].busStopName, service.loopPoint];
-            }
+                service.interchangeNames = [data[0].busStopName, data[1].busStopName];
 
-            res.render('general-search/results', {
-              busStops, service
+                if (service.interchanges[0] == service.interchanges[1]) { // Loop svc
+                  service.interchangeNames = [data[0].busStopName, service.loopPoint];
+                }
+
+                res.render('general-search/results', {
+                  busStops, service
+                });
             });
           });
         } else res.render('general-search/results', {
