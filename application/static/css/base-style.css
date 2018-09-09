@@ -45,3 +45,18 @@ a, a:visited {
     text-decoration: none;
     color: #c5c5c5;
 }
+
+#curinfo {
+    background-color: #1e1e1e;
+    height: calc(4vh + 3vw);
+    display: flex;
+    align-items: center;
+}
+
+#time {
+    margin-left: auto;
+    text-align: center;
+    margin-right: calc(1vw + 2vh);
+    font-size: calc(2vh + 0.8vw);
+    margin-top: calc(-0.1vh - 0.05vw);
+}
