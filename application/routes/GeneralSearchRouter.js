@@ -30,13 +30,16 @@ class GeneralSearchRouter {
       return;
     }
 
-    GeneralSearchRouter.busStops.find({
-      $or: [
-        {busStopCode: search},
-        {busStopName: new RegExp(search, 'i')},
-        {roadName: new RegExp(search, 'i')}
-      ]
-    }, (err, busStops) => {
+    let query = {
+        $or: [
+            {busStopCode: search},
+            {busStopName: new RegExp(search, 'i')}
+        ]
+    };
+
+    if (search.length > 4) query['$or'].push({roadName: new RegExp(search, 'i')});
+
+    GeneralSearchRouter.busStops.find(query, (err, busStops) => {
 
       let busStopsByNameLength = {};
       let finalBusStops = [];
