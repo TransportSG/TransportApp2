@@ -18,6 +18,7 @@ const EDSRouter = require('../application/routes/EDSRouter');
 const BusSearcherRouter = require('../application/routes/BusSearcherRouter');
 const BusMatcherRouter = require('../application/routes/BusMatcherRouter');
 const GeneralSearchRouter = require('../application/routes/GeneralSearchRouter');
+const BusServiceInfoRouter = require('../application/routes/BusServiceInfoRouter');
 
 const serverConfig = require('./server-config.json');
 
@@ -93,6 +94,9 @@ class MainServer extends Module {
         expressApp.get('/search', GeneralSearchRouter.renderMain);
         expressApp.post('/search', GeneralSearchRouter.search);
 
+        expressApp.get('/bus/:svc/', BusServiceInfoRouter.index);
+        expressApp.get('/bus/:svc/:dir', BusServiceInfoRouter.index);
+
         expressApp.get('/offline', (req, res) => {
             res.render('offline');
         });
@@ -109,6 +113,7 @@ class MainServer extends Module {
         EDSRouter.init();
         BusSearcherRouter.init();
         GeneralSearchRouter.init();
+        BusServiceInfoRouter.init();
     }
 
 }

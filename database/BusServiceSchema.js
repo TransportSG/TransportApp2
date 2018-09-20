@@ -32,6 +32,8 @@ var BusServiceSchema = new Schema({
     stops: [
         {
             busStopCode: String,
+            busStopName: String,
+            roadName: String,
             distance: Number,
             stopNumber: Number,
             firstBus: {

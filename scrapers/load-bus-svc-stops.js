@@ -11,6 +11,7 @@ let busStopsRepo = new BusStopsRepository(DatabaseConnectionManager.getConnectio
 
 let busServiceRouteLister = new BusServiceRouteLister(config.accessKey);
 
+
 busServiceRouteLister.getData(data => {
     let services = Object.keys(data);
     services.forEach(serviceNo => {
@@ -20,8 +21,31 @@ busServiceRouteLister.getData(data => {
 
             console.log(serviceNo + ' dir ' + dir + ' ' + dirStops.length + ' stops');
             busServiceRepo.findOne(serviceNo, dir, (err, svc) => {
-                svc.stops = dirStops;
-                svc.save(() => {console.log('saved ' + serviceNo + 'D' + dir)});
+
+                let promises = [];
+                let finalBusStops = [];
+
+                dirStops.forEach(busStop => {
+                    promises.push(busStopsRepo.findWithPromise({
+                        busStopCode: busStop.busStopCode
+                    }).then(busStopData => {
+                        busStopData = busStopData[0];
+                        finalBusStops[busStop.stopNumber] = {
+                            busStopCode: busStopData.busStopCode,
+                            busStopName: busStopData.busStopName,
+                            roadName: busStopData.roadName,
+                            distance: busStop.distance,
+                            stopNumber: busStop.stopNumber,
+                            firstBus: busStop.firstBus,
+                            lastBus: busStop.lastBus
+                        };
+                    }));
+                });
+
+                Promise.all(promises).then(() => {
+                    svc.stops = finalBusStops.filter(b => !!b);
+                    svc.save(() => {console.log('saved ' + serviceNo + 'D' + dir)});
+                });
             });
         });
     })

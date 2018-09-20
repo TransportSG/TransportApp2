@@ -1,0 +1,13 @@
+extends ../layout.pug
+
+block head
+    title='Bus Service ' + service.fullService
+
+block css
+    link(rel='stylesheet' href='/static/css/service-info.css')
+
+block header
+    img#magnifying-glass(src='/static/images/magnifying-glass.svg')
+    span#title='Bus Service ' + service.fullService
+
+block content
