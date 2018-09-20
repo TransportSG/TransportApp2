@@ -32,8 +32,14 @@ var BusServiceSchema = new Schema({
     stops: [
         {
             busStopCode: String,
-            busStopName: String,
-            busStopDistance: Number,
+            distance: Number,
+            stopNumber: Number,
+            firstBus: {
+                weekday: String, saturday: String, sunday: String
+            },
+            lastBus: {
+                weekday: String, saturday: String, sunday: String
+            },
             _id: false
         }
     ],
