@@ -17,7 +17,6 @@ block content
             span#svcText=service.fullService
         div#terminals
             div
-                -console.log(service.interchanges)
                 span=service.interchanges[0].busStopName.toUpperCase()
             div
                 if service.interchanges[0].busStopCode === service.interchanges[1].busStopCode

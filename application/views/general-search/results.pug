@@ -1,12 +1,13 @@
 if !!service
   //-future idea - show current freq on right
-  div.service-container.result
-    div(class='service-number-container ' + service.operator.toLowerCase())
-      span.service-number=service.serviceNumber
-      span.service-variant=service.variant
-    div.result-details
-      span.result-info-top=service.routeType.slice(0, 1) + service.routeType.slice(1).toLowerCase() + ' Service ' + service.fullService
-      span.result-info-bot=service.interchangeNames[0] + ' - ' + service.interchangeNames[1]
+  a(href='/bus/' + service.fullService).bus-stop-container.result
+      div.service-container.result
+        div(class='service-number-container ' + service.operator.toLowerCase())
+          span.service-number=service.serviceNumber
+          span.service-variant=service.variant
+        div.result-details
+          span.result-info-top=service.routeType.slice(0, 1) + service.routeType.slice(1).toLowerCase() + ' Service ' + service.fullService
+          span.result-info-bot=service.interchangeNames[0] + ' - ' + service.interchangeNames[1]
 
 for busStop in busStops
     a(href='/timings/' + busStop.busStopCode).bus-stop-container.result

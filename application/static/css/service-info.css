@@ -1,3 +1,9 @@
+#magnifying-glass {
+    width: calc((100vw + 100vh) * 0.02);
+    height: calc((100vw + 100vh) * 0.02);
+    margin-left: calc((100vw + 100vh) * 0.01);
+}
+
 #svcSummary {
     display: flex;
     height: calc(7vh + 6vw);
