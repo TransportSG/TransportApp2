@@ -4,13 +4,14 @@ const TimedHashMap = require('./TimedHashMap');
 
 class BusServiceRepository extends Repository {
 
-    constructor(databaseConnection) {
+    constructor(databaseConnection, shouldClone) {
         super();
 
         this.databaseConnection = databaseConnection;
         this.serviceCache = new TimedHashMap(1000 * 60 * 60 * 3); // 1000ms * 60 * 60 * 3 = 1min * 60 * 3 = 1hr * 3 = 3hr
 
         this.BusServiceModel = databaseConnection.model('BusService', BusServiceSchema);
+        this.shouldClone = shouldClone || true;
     }
 
     findOne(service, direction, callback) {
@@ -19,7 +20,10 @@ class BusServiceRepository extends Repository {
             direction = 1;
         }
         if (this.serviceCache.has(service + '.' + direction)) {
-            callback(null, JSON.parse(JSON.stringify(this.serviceCache.get(service + '.' + direction))));
+            if (this.shouldClone)
+                callback(null, JSON.parse(JSON.stringify(this.serviceCache.get(service + '.' + direction))));
+            else
+                callback(null, this.serviceCache.get(service + '.' + direction));
             return;
         }
 
@@ -31,7 +35,10 @@ class BusServiceRepository extends Repository {
                 this.serviceCache.set(service + '.' + direction, busService);
             }
 
-            setTimeout(callback.bind(null, err, JSON.parse(JSON.stringify(busService))));
+            if (this.shouldClone)
+                setTimeout(callback.bind(null, err, JSON.parse(JSON.stringify(busService))));
+            else
+                setTimeout(callback.bind(null, err, busService));
         });
     }
 

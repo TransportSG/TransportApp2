@@ -44,7 +44,7 @@ busServiceRouteLister.getData(data => {
 
                 Promise.all(promises).then(() => {
                     svc.stops = finalBusStops.filter(b => !!b);
-                    svc.save(() => {console.log('saved ' + serviceNo + 'D' + dir)});
+                    svc.save((e) => {if (!e) console.log('saved ' + serviceNo + 'D' + dir) else console.log(e)});
                 });
             });
         });

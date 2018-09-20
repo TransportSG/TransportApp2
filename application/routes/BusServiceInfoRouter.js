@@ -15,6 +15,10 @@ class BusServiceInfoRouter extends Router {
         let dir = req.params.dir || 1;
 
         BusServiceInfoRouter.busServices.findOne(svc, dir, (err, service) => {
+            if (!service) {
+                res.end('404');
+                return;
+            };
 
             Promise.all(service.interchanges.map(busStopCode => {
                 return BusServiceInfoRouter.busStops.findWithPromise({busStopCode})
