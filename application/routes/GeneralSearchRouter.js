@@ -23,7 +23,7 @@ class GeneralSearchRouter {
     }
 
     let search = req.body.search;
-    if (!!search.match(/[^\w /-]/)) {
+    if (!!search.match(/[^\w \-\.\']/)) {
       res.status(400).json({
         error: 'Invalid search string'
       });
@@ -65,10 +65,10 @@ class GeneralSearchRouter {
 
       busStops = finalBusStops;
 
-      GeneralSearchRouter.busServices.findOne(search.toUpperCase(), 1, (err, service) => {
+      GeneralSearchRouter.busServices.findOne(new RegExp(search, 'i'), 1, (err, service) => {
         if (!!service) {
 
-          GeneralSearchRouter.busServices.findOne(search.toUpperCase(), 2, (err, service2) => {
+          GeneralSearchRouter.busServices.findOne(new RegExp(search, 'i'), 2, (err, service2) => {
               if (!service2) {
                   service2 = {interchanges: service.interchanges};
               }
