@@ -65,10 +65,10 @@ class GeneralSearchRouter {
 
       busStops = finalBusStops;
 
-      GeneralSearchRouter.busServices.findOne(new RegExp(search, 'i'), 1, (err, service) => {
+      GeneralSearchRouter.busServices.findOne(new RegExp('^' + search + '$', 'i'), 1, (err, service) => {
         if (!!service) {
 
-          GeneralSearchRouter.busServices.findOne(new RegExp(search, 'i'), 2, (err, service2) => {
+          GeneralSearchRouter.busServices.findOne(new RegExp('^' + search + '$', 'i'), 2, (err, service2) => {
               if (!service2) {
                   service2 = {interchanges: service.interchanges};
               }
