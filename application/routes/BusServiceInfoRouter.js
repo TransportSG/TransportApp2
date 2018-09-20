@@ -15,11 +15,19 @@ class BusServiceInfoRouter extends Router {
         let dir = req.params.dir || 1;
 
         BusServiceInfoRouter.busServices.findOne(svc, dir, (err, service) => {
-            res.render('bus-service-info/index', {
-                service
+
+            Promise.all(service.interchanges.map(busStopCode => {
+                return BusServiceInfoRouter.busStops.findWithPromise({busStopCode})
+            })).then(data => {
+                data = data.map(a=>a[0]);
+                service.interchanges = data;
+
+                res.render('bus-service-info/index', {
+                    service
+                });
             });
         });
-    }
+    };
 }
 
 module.exports = BusServiceInfoRouter;

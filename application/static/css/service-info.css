@@ -1,0 +1,50 @@
+#svcSummary {
+    display: flex;
+    height: calc(7vh + 6vw);
+}
+
+#svcNumber {
+    width: calc(7vh + 8vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#svcText {
+    font-size: calc(3vh + 3vw);
+    margin-top: calc(-1vh - 0.6vw);
+}
+
+#terminals > div {
+     height: calc(3.5vh + 3vw);
+     display: flex;
+     align-items: center;
+     font-size: calc(1.7vh + 1.3vw);
+     background-color: #2a2a2a;
+     width: calc(-7vh + 92vw);
+}
+
+#terminals > div > span {
+    margin-left: calc(1.2vh + 0.5vw);
+}
+
+#terminals > div:nth-child(2) {
+    background-color: #202020;
+}
+
+.svc-sbst {
+    background-color: #b845be;
+}
+
+.svc-smrt {
+    background-color: #c63d3d;
+}
+
+.svc-tts {
+    background-color: #4ebe45;
+}
+
+.svc-gas {
+    background-color: #d7832c;
+}

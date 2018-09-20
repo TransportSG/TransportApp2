@@ -19,7 +19,7 @@ class BusServiceRepository extends Repository {
             direction = 1;
         }
         if (this.serviceCache.has(service + '.' + direction)) {
-            callback(null, this.serviceCache.get(service + '.' + direction));
+            callback(null, JSON.parse(JSON.stringify(this.serviceCache.get(service + '.' + direction))));
             return;
         }
 
@@ -31,7 +31,7 @@ class BusServiceRepository extends Repository {
                 this.serviceCache.set(service + '.' + direction, busService);
             }
 
-            setTimeout(callback.bind(null, err, busService));
+            setTimeout(callback.bind(null, err, JSON.parse(JSON.stringify(busService))));
         });
     }
 

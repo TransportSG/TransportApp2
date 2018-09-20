@@ -11,3 +11,16 @@ block header
     span#title='Bus Service ' + service.fullService
 
 block content
+    div#svcSummary
+        div(class='svc-' + service.operator)#svcNumber
+            span#routeType=service.routeType
+            span#svcText=service.fullService
+        div#terminals
+            div
+                -console.log(service.interchanges)
+                span=service.interchanges[0].busStopName.toUpperCase()
+            div
+                if service.interchanges[0].busStopCode === service.interchanges[1].busStopCode
+                    span=service.loopPoint.toUpperCase()
+                else
+                    span=service.interchanges[1].busStopName.toUpperCase()
