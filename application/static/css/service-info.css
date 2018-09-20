@@ -4,6 +4,14 @@
     margin-left: calc((100vw + 100vh) * 0.01);
 }
 
+* > .coloured-row:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+* > .coloured-row:nth-child(odd) {
+    background-color: #202020;
+}
+
 #svcSummary {
     display: flex;
     height: calc(7vh + 6vw);
@@ -27,16 +35,11 @@
      display: flex;
      align-items: center;
      font-size: calc(1.7vh + 1.3vw);
-     background-color: #2a2a2a;
      width: calc(-7vh + 92vw);
 }
 
 #terminals > div > span {
     margin-left: calc(1.2vh + 0.5vw);
-}
-
-#terminals > div:nth-child(2) {
-    background-color: #202020;
 }
 
 .svc-sbst {
@@ -53,4 +56,26 @@
 
 .svc-gas {
     background-color: #d7832c;
+}
+
+
+.table-header {
+    background-color: #171717;
+}
+
+.table-data {
+    height: calc(3vh + 3vw);
+    display: flex;
+    align-items: center;
+    font-size: calc(1.3vh + 1.4vw);
+}
+
+.table-data > span {
+    margin-top: calc(-0.3vh - 0.1vw);
+    text-align: center;
+    width: 30vw;
+}
+
+.spacing1 > span:nth-child(1) {
+    width: 40vw;
 }

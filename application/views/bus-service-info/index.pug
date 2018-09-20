@@ -16,10 +16,27 @@ block content
             span#routeType=service.routeType
             span#svcText=service.fullService
         div#terminals
-            div
+            div.coloured-row
                 span=service.interchanges[0].busStopName.toUpperCase()
-            div
+            div.coloured-row
                 if service.interchanges[0].busStopCode === service.interchanges[1].busStopCode
                     span=service.loopPoint.toUpperCase()
                 else
                     span=service.interchanges[1].busStopName.toUpperCase()
+    div#keyTimings
+        div.table-header.table-data.spacing1
+            span Days
+            span First Bus
+            span Last Bus
+        div.coloured-row.table-data.spacing1
+            span Weekdays
+            span=service.stops[0].firstBus.weekday
+            span=service.stops[0].lastBus.weekday
+        div.coloured-row.table-data.spacing1
+            span Saturday
+            span=service.stops[0].firstBus.saturday
+            span=service.stops[0].lastBus.saturday
+        div.coloured-row.table-data.spacing1
+            span Sundays / PH
+            span=service.stops[0].firstBus.sunday
+            span=service.stops[0].lastBus.sunday
