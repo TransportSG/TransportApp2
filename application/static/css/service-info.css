@@ -219,7 +219,7 @@ html {
 }
 
 .busInfo {
-    font-size: calc(0.9vw + 0.8vw);
+    font-size: calc(0.7vh + 0.7vw);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -227,6 +227,6 @@ html {
 }
 
 .busInfo > img {
-    width: calc(0.7vw + 0.7vw);
-    height: calc(0.7vw + 0.7vw);
+    width: calc(0.7vh + 0.7vw);
+    height: calc(0.7vh + 0.7vw);
 }

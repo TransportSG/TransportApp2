@@ -88,7 +88,7 @@ block content
                     div.busArr
                         for timing in timings[busStop.busStopCode]
                             div(class='busArrIndicator load-' + (timing.load*1 + 1))
-                                span=timingDiff(new Date(), timing.arrivalTime).minutes
+                                span=timingDiff(new Date(), timing.arrivalTime).minutes || 'Arr'
                                 div.busInfo
                                     span=busTypes[timing.busType]
                                     if timing.isWAB
