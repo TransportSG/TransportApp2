@@ -140,6 +140,11 @@ html {
     font-size: calc(0.96vh + 1.1vw);
 }
 
+.table-data.table-header.spacing2 > span:nth-child(3) {
+    font-size: calc(1.3vh + 1.4vw);
+}
+
+
 .table-data.spacing2 > * {
     width: 30vw;
 }
@@ -156,7 +161,7 @@ html {
     display: inline-flex;
 }
 
-.spacing2.coloured-row > div:nth-child(3) > div.busStop {
+div.busStop {
     display: flex;
     flex-direction: column;
 
@@ -165,13 +170,12 @@ html {
     left: calc(3vh + 2vw);
 }
 
-.spacing2.coloured-row > div:nth-child(3) > div.busStop > span:nth-child(1) {
+div.busStop > span:nth-child(1) {
     font-size: calc(1vh + 0.8vw);
 }
 
-.spacing2.coloured-row > div:nth-child(3) > div.busStop > span:nth-child(2) {
+div.busStop > span:nth-child(2) {
     font-size: calc(1.1vh + 1.1vw);
-    margin-top: calc(-0.2vh - 0.2vw);
 }
 
 .busArr {
