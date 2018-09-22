@@ -170,7 +170,7 @@ html {
 }
 
 .spacing2.coloured-row > div:nth-child(3) > div.busStop > span:nth-child(2) {
-    font-size: calc(1.2vh + 1.2vw);
+    font-size: calc(1.1vh + 1.1vw);
     margin-top: calc(-0.2vh - 0.2vw);
 }
 
@@ -183,9 +183,11 @@ html {
 }
 
 .busArrIndicator {
-    width: 6vw;
+    width: 5.5vw;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .load-1 {
@@ -217,10 +219,11 @@ html {
 }
 
 .busInfo {
-    font-size: calc(0.7vw + 0.7vw);
+    font-size: calc(0.9vw + 0.8vw);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    width: 5.5vw;
 }
 
 .busInfo > img {
