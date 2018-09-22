@@ -11,6 +11,7 @@ block header
     span#title='Bus Service ' + service.fullService
 
 block content
+    -var busTypes = ['', 'SD', 'DD', 'BD']
     div#svcSummary
         div(class='svc-' + service.operator)#svcNumber
             span#routeType=service.routeType
@@ -81,5 +82,16 @@ block content
                 span=busStop.distance
                 span=busStop.busStopCode
                 div
-                    span=busStop.roadName
-                    span=busStop.busStopName
+                    div.busStop
+                        span=busStop.roadName
+                        span=busStop.busStopName
+                    div.busArr
+                        for timing in timings[busStop.busStopCode]
+                            div(class='busArrIndicator load-' + (timing.load*1 + 1))
+                                span=timingDiff(new Date(), timing.arrivalTime).minutes
+                                div.busInfo
+                                    span=busTypes[timing.busType]
+                                    if timing.isWAB
+                                        img(src='/static/images/wheelchair.svg')
+                                    else
+                                        img(src='/static/images/non-wheelchair.svg')
