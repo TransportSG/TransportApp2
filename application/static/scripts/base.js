@@ -13,7 +13,7 @@ function formatCurTime() {
     let a = [], b = [];
     let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-    a.push(p(d.getUTCHours() + 8));
+    a.push(p((d.getUTCHours() + 8) % 24));
     a.push(p(d.getUTCMinutes()));
     a.push(p(d.getSeconds()));
 
