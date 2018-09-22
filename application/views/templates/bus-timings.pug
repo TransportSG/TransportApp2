@@ -13,10 +13,11 @@ for serviceTimingData in timingsClone
     -var timings = serviceTimingData.timings
 
     div.service-container
-        div(class=serviceData.operator.toLowerCase() + ' service-number-container')
-            div.service-number-inner-container
-                span.service-number=serviceData.serviceNumber
-                span.service-variant=serviceData.variant
+        a(href='/bus/' + serviceData.fullService)
+            div(class=serviceData.operator.toLowerCase() + ' service-number-container')
+                div.service-number-inner-container
+                    span.service-number=serviceData.serviceNumber
+                    span.service-variant=serviceData.variant
 
         a(href='/timings/' + destination.busStopCode).miniEDS
             div.edsText
