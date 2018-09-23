@@ -68,8 +68,8 @@ class MainServer extends Module {
     static configureRoutes(expressApp) {
         expressApp.get('/', IndexRouter.index);
 
-        expressApp.get('/bus/search', BusSearcherRouter.index);
-        expressApp.post('/bus/search', BusSearcherRouter.search);
+        expressApp.get('/adv-bus-search-kittyclub-r0gue', BusSearcherRouter.index);
+        expressApp.post('/adv-bus-search-kittyclub-r0gue', BusSearcherRouter.search);
 
         expressApp.get('/timings/:busStopCode', BusStopTimingsRouter.index);
         expressApp.get('/bookmarks', BusStopTimingsRouter.getBookmarks);

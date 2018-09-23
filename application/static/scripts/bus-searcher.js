@@ -4,7 +4,7 @@ function loadBuses() {
     if (!$('#input').value.trim()) return;
 
     $.ajax({
-        url: '/bus/search',
+        url: '/adv-bus-search-kittyclub-r0gue',
         method: 'POST',
         data: {
             query: $('#input').value
