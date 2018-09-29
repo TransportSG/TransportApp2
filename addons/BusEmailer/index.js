@@ -44,19 +44,27 @@ class BusEmailer extends Module {
             BusSearcherRouter.filterByType(timingsCache, 'SD'), BusSearcherRouter.getSvcsFromInput({depots: ['SLBP']})
         );
 
-        let BUDEPDownsize = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'SD'), BusSearcherRouter.getSvcsFromInput({services: ['78', '79', '98', '143']})
-        );
         timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
         let BUDEPUpsize = BusSearcherRouter.filterServices(
             BusSearcherRouter.filterByType(timingsCache, 'DD'), ['941', '947', '990']
         );
 
+        let KJDEPUpsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
+            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['991']
+        ));
+        let KJDEPDownsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
+            BusSearcherRouter.filterByType(timingsCache, 'SD'), ['180', '972']
+        ));
+        let KJDEPBendy = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
+            BusSearcherRouter.filterByType(timingsCache, 'BD'), ['983', '180', '176', '985', '972', '61']
+        ));
+
         tridents = BusEmailer.getServiceList(tridents);
         SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize);
 
-        let BUDEPFunfair = BusEmailer.getServiceList(BUDEPDownsize).concat(BusEmailer.getServiceList(BUDEPUpsize));
+        let BUDEPFunfair = BusEmailer.getServiceList(BUDEPUpsize);
+        let KJFunfair = KJDEPUpsize.concat(KJDEPDownsize).concat(KJDEPBendy);
 
         cameoSorter.readData((data, last) => {
             if (+new Date() - last > 86400000)
@@ -70,7 +78,7 @@ class BusEmailer extends Module {
 
             let freq = cameoSorter.tabulateFrequency(data);
             let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(freq, svc));
-            cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair});
+            cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair});
         });
     }
 
@@ -127,30 +135,33 @@ class BusEmailer extends Module {
                                     (mailData.svcsWithBendies.join('') !== previousData.svcsWithBendies.join(''));
 
                 if (shouldUpdate) {
+                    let nwabSvcUpdate = BusEmailer.getArrayDiff(previousData.svcsWithNWABs, mailData.svcsWithNWABs);
+                    let bendyUpdate = BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies);
                     let emailBody =
 `
 <h1>Bus update as of ${new Date().toString()}</h1>
 
-<p>Trident Deployments</p>
-<code>${mailData.tridents.join(', ')}</code>
+${mailData.tridents.length > 0 ? `<p>Trident Deployments</p>
+<code>${mailData.tridents.join(', ')}</code>`: ''}
 
-${mailData.SLBPDownsize.length > 0 ? `<p>SL SD</p>
+${mailData.SLBPDownsize.length > 0 ? `<p>SLBP Funfair</p>
 <code>${mailData.SLBPDownsize.join(', ')}</code>` : ''}
-
+${mailData.KJFunfair.length > 0 ? `<p>KJDEP Funfair</p>
+<code>${mailData.KJFunfair.join(', ')}</code>` : ''}
 ${mailData.BUDEPFunfair.length > 0 ? `<p>BUDEP Funfair</p>
 <code>${mailData.BUDEPFunfair.join(', ')}</code>` : ''}
 
 <p>Services with NWABS (Fake NWABs included): </p>
+${nwabSvcUpdate.additions.length > 0 ? `<p>A: <code>${nwabSvcUpdate.additions.join(', ')}</code></p>` : ''}
+${nwabSvcUpdate.subtractions.length > 0 ? `<p>A: <code>${nwabSvcUpdate.subtractions.join(', ')}</code></p>` : ''}
 <code>${mailData.svcsWithNWABs.join(', ')}</code>
-<p>Additions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithNWABs, mailData.svcsWithNWABs).additions.join(', ')}</code></p>
-<p>subtractions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithNWABs, mailData.svcsWithNWABs).subtractions.join(', ')}</code></p>
 <br>
 <br>
 
 <p>Services with bendies (Wifi buses on 10 included): </p>
+${bendyUpdate.additions.length > 0 ? `<p>A: <code>${bendyUpdate.additions.join(', ')}</code></p>` : ''}
+${bendyUpdate.subtractions.length > 0 ? `<p>A: <code>${bendyUpdate.subtractions.join(', ')}</code></p>` : ''}
 <code>${mailData.svcsWithBendies.join(', ')}</code>
-<p>Additions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).additions.join(', ')}</code></p>
-<p>subtractions: <code>${BusEmailer.getArrayDiff(previousData.svcsWithBendies, mailData.svcsWithBendies).subtractions.join(', ')}</code></p>
 `;
 
                     config.subscribers.forEach(email => {
