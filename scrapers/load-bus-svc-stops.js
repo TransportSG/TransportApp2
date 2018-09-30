@@ -6,8 +6,8 @@ let config = require('./lta-config.json');
 
 DatabaseConnectionManager.init();
 
-let busServiceRepo = new BusServiceRepository(DatabaseConnectionManager.getConnection('TransportApp'));
-let busStopsRepo = new BusStopsRepository(DatabaseConnectionManager.getConnection('TransportApp'));
+let busServiceRepo = new BusServiceRepository(DatabaseConnectionManager.getConnection('TransportApp'), false);
+let busStopsRepo = new BusStopsRepository(DatabaseConnectionManager.getConnection('TransportApp'), false);
 
 let busServiceRouteLister = new BusServiceRouteLister(config.accessKey);
 
@@ -44,7 +44,7 @@ busServiceRouteLister.getData(data => {
 
                 Promise.all(promises).then(() => {
                     svc.stops = finalBusStops.filter(b => !!b);
-                    svc.save((e) => {if (!e) console.log('saved ' + serviceNo + 'D' + dir) else console.log(e)});
+                    svc.save(e => {if (!e) {console.log('saved ' + serviceNo + 'D' + dir)} else {console.log(e)}});
                 });
             });
         });
