@@ -11,7 +11,7 @@ class BusServiceRepository extends Repository {
         this.serviceCache = new TimedHashMap(1000 * 60 * 60 * 3); // 1000ms * 60 * 60 * 3 = 1min * 60 * 3 = 1hr * 3 = 3hr
 
         this.BusServiceModel = databaseConnection.model('BusService', BusServiceSchema);
-        this.shouldClone = shouldClone || true;
+        this.shouldClone = (typeof shouldClone === 'undefined' ? true : shouldClone);
     }
 
     findOne(service, direction, callback) {
