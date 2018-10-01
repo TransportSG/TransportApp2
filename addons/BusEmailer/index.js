@@ -53,9 +53,13 @@ class BusEmailer extends Module {
         let KJDEPUpsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
             BusSearcherRouter.filterByType(timingsCache, 'DD'), ['991']
         ));
+
+        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
         let KJDEPDownsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
             BusSearcherRouter.filterByType(timingsCache, 'SD'), ['180', '972']
         ));
+
+        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
         let KJDEPBendy = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
             BusSearcherRouter.filterByType(timingsCache, 'BD'), ['983', '180', '176', '985', '972', '61']
         ));
@@ -153,14 +157,14 @@ ${mailData.BUDEPFunfair.length > 0 ? `<p>BUDEP Funfair</p>
 
 <p>Services with NWABS (Fake NWABs included): </p>
 ${nwabSvcUpdate.additions.length > 0 ? `<p>A: <code>${nwabSvcUpdate.additions.join(', ')}</code></p>` : ''}
-${nwabSvcUpdate.subtractions.length > 0 ? `<p>A: <code>${nwabSvcUpdate.subtractions.join(', ')}</code></p>` : ''}
+${nwabSvcUpdate.subtractions.length > 0 ? `<p>S: <code>${nwabSvcUpdate.subtractions.join(', ')}</code></p>` : ''}
 <code>${mailData.svcsWithNWABs.join(', ')}</code>
 <br>
 <br>
 
 <p>Services with bendies (Wifi buses on 10 included): </p>
 ${bendyUpdate.additions.length > 0 ? `<p>A: <code>${bendyUpdate.additions.join(', ')}</code></p>` : ''}
-${bendyUpdate.subtractions.length > 0 ? `<p>A: <code>${bendyUpdate.subtractions.join(', ')}</code></p>` : ''}
+${bendyUpdate.subtractions.length > 0 ? `<p>S: <code>${bendyUpdate.subtractions.join(', ')}</code></p>` : ''}
 <code>${mailData.svcsWithBendies.join(', ')}</code>
 `;
 
