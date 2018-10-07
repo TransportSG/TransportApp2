@@ -24,7 +24,7 @@ class Log123 extends Module {
     }
 
     static init() {
-        setTimeout(Log123.find, 1000);
+        setInterval(Log123.find, 60 * 1000);
     }
 
 }
