@@ -5,4 +5,4 @@
 /addons/TensorFlow-py/tf_files
 /application/routes/images
 /https
-/addons/Log123/123.txt
+/addons/Log123/123*.txt

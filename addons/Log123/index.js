@@ -16,8 +16,8 @@ class Log123 extends Module {
             if (bus.busType === '2') {
                 let curTime = new Date();
                 let depDiff = Math.abs(new Date(bus.arrivalTime) - curTime) / 1000 / 60;
-                if (depDiff < 1) {
-                    fs.appendFile(__dirname + '/123.txt', bus.arrivalTime + '\n', () => {});
+                if (depDiff < 0.6) {
+                    fs.appendFile(__dirname + '/123-' + curTime.getDate() + '.txt', bus.arrivalTime + '\n', () => {});
                 }
             }
         });
