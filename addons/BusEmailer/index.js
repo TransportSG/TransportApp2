@@ -45,6 +45,11 @@ class BusEmailer extends Module {
         );
 
         timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
+        let BBDEPUpsize = BusSearcherRouter.filterServices(
+            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['33']
+        );
+
+        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
         let BUDEPUpsize = BusSearcherRouter.filterServices(
             BusSearcherRouter.filterByType(timingsCache, 'DD'), ['941', '947', '990']
@@ -68,6 +73,7 @@ class BusEmailer extends Module {
         SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize);
 
         let BUDEPFunfair = BusEmailer.getServiceList(BUDEPUpsize);
+        let BBDEPFunfair = BusEmailer.getServiceList(BBDEPUpsize);
         let KJFunfair = KJDEPUpsize.concat(KJDEPDownsize).concat(KJDEPBendy);
 
         cameoSorter.readData((data, last) => {
@@ -82,7 +88,7 @@ class BusEmailer extends Module {
 
             let freq = cameoSorter.tabulateFrequency(data);
             let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(freq, svc));
-            cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair});
+            cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair, BBDEPFunfair});
         });
     }
 
@@ -150,6 +156,8 @@ ${mailData.tridents.length > 0 ? `<p>Trident Deployments</p>
 
 ${mailData.SLBPDownsize.length > 0 ? `<p>SLBP Funfair</p>
 <code>${mailData.SLBPDownsize.join(', ')}</code>` : ''}
+${mailData.SLBPDownsize.length > 0 ? `<p>BBDEP Funfair</p>
+<code>${mailData.BBDEPPDownsize.join(', ')}</code>` : ''}
 ${mailData.KJFunfair.length > 0 ? `<p>KJDEP Funfair</p>
 <code>${mailData.KJFunfair.join(', ')}</code>` : ''}
 ${mailData.BUDEPFunfair.length > 0 ? `<p>BUDEP Funfair</p>
