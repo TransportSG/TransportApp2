@@ -156,7 +156,7 @@ ${mailData.tridents.length > 0 ? `<p>Trident Deployments</p>
 
 ${mailData.SLBPDownsize.length > 0 ? `<p>SLBP Funfair</p>
 <code>${mailData.SLBPDownsize.join(', ')}</code>` : ''}
-${mailData.SLBPDownsize.length > 0 ? `<p>BBDEP Funfair</p>
+${mailData.BBDEPFunfair.length > 0 ? `<p>BBDEP Funfair</p>
 <code>${mailData.BBDEPFunfair.join(', ')}</code>` : ''}
 ${mailData.KJFunfair.length > 0 ? `<p>KJDEP Funfair</p>
 <code>${mailData.KJFunfair.join(', ')}</code>` : ''}
