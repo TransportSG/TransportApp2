@@ -11,6 +11,8 @@ let busStopsRepo = new BusStopsRepository(DatabaseConnectionManager.getConnectio
 
 let busServiceRouteLister = new BusServiceRouteLister(config.accessKey);
 
+let remaining = 0;
+let completed = 0;
 
 busServiceRouteLister.getData(data => {
     let services = Object.keys(data);
@@ -44,9 +46,15 @@ busServiceRouteLister.getData(data => {
 
                 Promise.all(promises).then(() => {
                     svc.stops = finalBusStops.filter(b => !!b);
-                    svc.save(e => {if (!e) {console.log('saved ' + serviceNo + 'D' + dir)} else {console.log(e)}});
+                    remaining++;
+                    svc.save(e => {completed++; if (!e) {console.log('saved ' + serviceNo + 'D' + dir)} else {console.log(e)}});
                 });
             });
         });
     })
 });
+
+setInterval(() => {
+    if (remaining > 0 && remaining === completed)
+        process.exit(0);
+}, 500);

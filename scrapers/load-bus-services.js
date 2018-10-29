@@ -8,6 +8,9 @@ DatabaseConnectionManager.init();
 let busServiceRepo = new BusServiceRepository(DatabaseConnectionManager.getConnection('TransportApp'));
 let busServiceLister = new BusServiceLister(config.accessKey);
 
+let remaining = 0;
+let completed = 0;
+
 function getServiceNumber(service) {
     if (service.startsWith('NR')) {
         return service.replace(/[0-9]/g, '');
@@ -67,11 +70,15 @@ busServiceLister.getData(data => {
 
         busServiceRepo.findOne(busService.ServiceNo, busService.Direction, (err, busService) => {
             if (!!busService) {
+                remaining++;
                 busServiceRepo.updateOne(query, serviceData, () => {
+                    completed++;
                     console.log('updated ' + query.fullService, query.routeDirection);
                 });
             } else {
+                remaining++;
                 busServiceRepo.create(serviceData, () => {
+                    completed++;
                     console.log('saved ' + query.fullService, query.routeDirection);
                 });
             }
@@ -79,3 +86,8 @@ busServiceLister.getData(data => {
 
     });
 });
+
+setInterval(() => {
+    if (remaining > 0 && remaining === completed)
+        process.exit(0);
+}, 500);

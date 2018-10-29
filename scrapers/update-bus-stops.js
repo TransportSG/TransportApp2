@@ -8,6 +8,9 @@ DatabaseConnectionManager.init();
 let busStopsRepo = new BusStopsRepository(DatabaseConnectionManager.getConnection('TransportApp'));
 let busStopsLister = new BusStopsLister(config.accessKey);
 
+let completed = 0;
+let remaining = 0;
+
 busStopsLister.getData(data => {
 
     let completedBusStops = [];
@@ -30,12 +33,15 @@ busStopsLister.getData(data => {
             if (completedBusStops.includes(query.busStopCode)) return;
             completedBusStops.push(query.busStopCode);
 
+            remaining++;
             if (!!busStop) {
                 busStopsRepo.updateOne(query, busStopData, () => {
+                    completed++;
                     console.log('updated ' + query.busStopCode);
                 });
             } else {
                 busStopsRepo.create(busStopData, () => {
+                    completed++;
                     console.log('saved ' + query.busStopCode)
                 });
             }
@@ -43,3 +49,8 @@ busStopsLister.getData(data => {
 
     });
 });
+
+setInterval(() => {
+    if (remaining > 0 && remaining === completed)
+        process.exit(0);
+}, 500);
