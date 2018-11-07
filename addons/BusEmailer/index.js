@@ -52,11 +52,11 @@ class BusEmailer extends Module {
         timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
         let BUDEPUpsize = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['941', '947', '990']
+            BusSearcherRouter.filterByType(timingsCache, 'DD'), [947']
         );
 
         let KJDEPUpsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['991']
+            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['300', '301', '302', '307']
         ));
 
         timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
@@ -66,7 +66,7 @@ class BusEmailer extends Module {
 
         timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
         let KJDEPBendy = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'BD'), ['983', '180', '176', '985', '972', '61']
+            BusSearcherRouter.filterByType(timingsCache, 'BD'), ['983', '180', '176', '985', '972', '61', '700', '700A']
         ));
 
         timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
