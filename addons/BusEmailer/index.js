@@ -52,7 +52,7 @@ class BusEmailer extends Module {
         timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
         let BUDEPUpsize = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'DD'), [947']
+            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['947']
         );
 
         let KJDEPUpsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
