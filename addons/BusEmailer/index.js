@@ -2,6 +2,8 @@ const nodemailer = require('nodemailer');
 const Module = require('../../Module');
 const BusSearcherRouter = require('../../application/routes/BusSearcherRouter');
 const BusTimings = require('../BusTimings/BusTimings');
+const request = require('request')
+const ltaConfig = require('../../scrapers/lta-config.json');
 
 const config = require('./bus-email-config.json');
 const depotData = require('../../application/routes/bus-depots.json');
@@ -23,80 +25,105 @@ class BusEmailer extends Module {
         return flattened.filter((e, i, a) => a.indexOf(e) === i).sort();
     }
 
-    static queryFunction(cb) {
-        let timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
-
-        let nwabBuses = BusSearcherRouter.filterByNWAB(timingsCache, 'nwab');
-        let bendyBuses = BusSearcherRouter.filterByType(timingsCache, 'BD');
-
-        let svcsWithNWABs = BusEmailer.getServiceList(nwabBuses);
-        let svcsWithBendies = BusEmailer.getServiceList(bendyBuses);
-
-        svcsWithNWABs = svcsWithNWABs.filter(svc => !svc.endsWith('M')).filter(svc =>
-            !depotData.LYDEP.includes(parseInt(svc).toString()) && !depotData.BUDEP.includes(parseInt(svc).toString())
-        );
-
-        let tridents = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(nwabBuses, 'DD'), BusSearcherRouter.getSvcsFromInput({depots: ['HGDEP']})
-        );
-
-        let SLBPDownsize = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'SD'), BusSearcherRouter.getSvcsFromInput({depots: ['SLBP']})
-        );
-
-        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
-        let BBDEPUpsize = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['33']
-        );
-
-        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
-
-        let BUDEPUpsize = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['947']
-        );
-
-        let KJDEPUpsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'DD'), ['300', '301', '302', '307']
-        ));
-
-        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
-        let KJDEPDownsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'SD'), ['180', '972']
-        ));
-
-        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
-        let KJDEPBendy = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(timingsCache, 'BD'), ['983', '180', '176', '985', '972', '61', '700', '700A']
-        ));
-
-        timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
-        let mkiv = BusSearcherRouter.filterServices(
-            BusSearcherRouter.filterByType(BusSearcherRouter.filterByNWAB(timingsCache, 'nwab'), 'SD'),
-            BusSearcherRouter.getSvcsFromInput({depots: ['HGDEP', 'ARBP', 'SLBP', 'BBDEP']}).filter(svc=>!(['123M', '63M'].includes(svc)))
-        );
-
-        tridents = BusEmailer.getServiceList(tridents);
-        SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize);
-
-        let BUDEPFunfair = BusEmailer.getServiceList(BUDEPUpsize);
-        let BBDEPFunfair = BusEmailer.getServiceList(BBDEPUpsize);
-        let KJFunfair = KJDEPUpsize.concat(KJDEPDownsize).concat(KJDEPBendy);
-        mkiv = BusEmailer.getServiceList(mkiv);
-
-        cameoSorter.readData((data, last) => {
-            if (+new Date() - last > 86400000)
-                data.push([]);
-
-            let changed = SLBPDownsize.map(svc => cameoSorter.addServiceToday(data, svc)).filter(svc=>svc);
-
-            if (changed.length || +new Date() - last > 86400000) {
-                cameoSorter.writeData(data);
+    static getLTATimings(bsc, svc, cb) {
+        let url = 'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=' + bsc + '&ServiceNo=' + svc;
+        request({
+            url,
+            headers: {
+                AccountKey: ltaConfig.accessKey
             }
+        }, (err, resp, body) => {
+            let data = JSON.parse(body);
 
-            let freq = cameoSorter.tabulateFrequency(data);
-            let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(freq, svc));
-            cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair, BBDEPFunfair, mkiv});
+            let service = data.Services[0];
+            if (!service) {cb([]); return};
+            let timings = [service.NextBus, service.NextBus2, service.NextBus3];
+
+            cb(timings);
         });
+    }
+
+    static queryFunction(cb) {
+
+        BusEmailer.getLTATimings(14009, '123M', arr => {
+            let mkiv123M = (arr.filter(bus => bus.Feature === '').length !== 0);
+
+            let timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
+
+            let nwabBuses = BusSearcherRouter.filterByNWAB(timingsCache, 'nwab');
+            let bendyBuses = BusSearcherRouter.filterByType(timingsCache, 'BD');
+
+            let svcsWithNWABs = BusEmailer.getServiceList(nwabBuses);
+            let svcsWithBendies = BusEmailer.getServiceList(bendyBuses);
+
+            svcsWithNWABs = svcsWithNWABs.filter(svc => !svc.endsWith('M')).filter(svc =>
+                !depotData.LYDEP.includes(parseInt(svc).toString()) && !depotData.BUDEP.includes(parseInt(svc).toString())
+            );
+
+            let tridents = BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(nwabBuses, 'DD'), BusSearcherRouter.getSvcsFromInput({depots: ['HGDEP']})
+            );
+
+            let SLBPDownsize = BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(timingsCache, 'SD'), BusSearcherRouter.getSvcsFromInput({depots: ['SLBP']})
+            );
+
+            timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
+            let BBDEPUpsize = BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(timingsCache, 'DD'), ['33']
+            );
+
+            timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
+
+            let BUDEPUpsize = BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(timingsCache, 'DD'), ['947']
+            );
+
+            let KJDEPUpsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(timingsCache, 'DD'), ['300', '301', '302', '307']
+            ));
+
+            timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
+            let KJDEPDownsize = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(timingsCache, 'SD'), ['180', '972']
+            ));
+
+            timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
+            let KJDEPBendy = BusEmailer.getServiceList(BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(timingsCache, 'BD'), ['983', '180', '176', '985', '972', '61', '700', '700A']
+            ));
+
+            timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
+            let mkiv = BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(BusSearcherRouter.filterByNWAB(timingsCache, 'nwab'), 'SD'),
+                BusSearcherRouter.getSvcsFromInput({depots: ['HGDEP', 'ARBP', 'SLBP', 'BBDEP']}).filter(svc=>!(['123M', '63M'].includes(svc)))
+            );
+
+            tridents = BusEmailer.getServiceList(tridents);
+            SLBPDownsize = BusEmailer.getServiceList(SLBPDownsize);
+
+            let BUDEPFunfair = BusEmailer.getServiceList(BUDEPUpsize);
+            let BBDEPFunfair = BusEmailer.getServiceList(BBDEPUpsize);
+            let KJFunfair = KJDEPUpsize.concat(KJDEPDownsize).concat(KJDEPBendy);
+            mkiv = BusEmailer.getServiceList(mkiv);
+            if (mkiv123M) mkiv.push('123M');
+
+            cameoSorter.readData((data, last) => {
+                if (+new Date() - last > 86400000)
+                    data.push([]);
+
+                let changed = SLBPDownsize.map(svc => cameoSorter.addServiceToday(data, svc)).filter(svc=>svc);
+
+                if (changed.length || +new Date() - last > 86400000) {
+                    cameoSorter.writeData(data);
+                }
+
+                let freq = cameoSorter.tabulateFrequency(data);
+                let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(freq, svc));
+                cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair, BBDEPFunfair, mkiv});
+            });
+        });
+
     }
 
     static getArrayDiff(oldArray, newArray) {
