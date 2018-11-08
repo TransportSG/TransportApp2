@@ -74,6 +74,11 @@ class BusEmailer extends Module {
             );
 
             timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
+            let ExpUpsize = BusSearcherRouter.filterServices(
+                BusSearcherRouter.filterByType(timingsCache, 'DD'), ['14e', '30e', '74e', '97e', '151e', '174e', '196e']
+            );
+
+            timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
             let BUDEPUpsize = BusSearcherRouter.filterServices(
                 BusSearcherRouter.filterByType(timingsCache, 'DD'), ['947']
@@ -105,6 +110,8 @@ class BusEmailer extends Module {
             let BUDEPFunfair = BusEmailer.getServiceList(BUDEPUpsize);
             let BBDEPFunfair = BusEmailer.getServiceList(BBDEPUpsize);
             let KJFunfair = KJDEPUpsize.concat(KJDEPDownsize).concat(KJDEPBendy);
+            let ExpFunfair = BusEmailer.getServiceList(ExpUpsize);
+
             mkiv = BusEmailer.getServiceList(mkiv);
             if (mkiv123M) mkiv.push('123M');
 
@@ -120,7 +127,7 @@ class BusEmailer extends Module {
 
                 let freq = cameoSorter.tabulateFrequency(data);
                 let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(freq, svc));
-                cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair, BBDEPFunfair, mkiv});
+                cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair, BBDEPFunfair, mkiv, ExpFunfair});
             });
         });
 
@@ -198,6 +205,8 @@ ${mailData.BUDEPFunfair.length > 0 ? `<p>BUDEP Funfair</p>
 <code>${mailData.BUDEPFunfair.join(', ')}</code>` : ''}
 ${mailData.mkiv.length > 0 ? `<p>MKIV Deployments</p>
 <code>${mailData.mkiv.join(', ')}</code>` : ''}
+${mailData.ExpFunfair.length > 0 ? `<p>Express Funfair</p>
+<code>${mailData.ExpFunfair.join(', ')}</code>` : ''}
 
 <p>Services with NWABS (Fake NWABs included): </p>
 ${nwabSvcUpdate.additions.length > 0 ? `<p>A: <code>${nwabSvcUpdate.additions.join(', ')}</code></p>` : ''}
