@@ -21,6 +21,8 @@ busServiceRouteLister.getData(data => {
         Object.keys(svcData).forEach(dir => {
             let dirStops = svcData[dir];
 
+            dirStops = dirStops.filter(busStop => !isNaN(parseInt(busStop.busStopCode)));
+
             console.log(serviceNo + ' dir ' + dir + ' ' + dirStops.length + ' stops');
             busServiceRepo.findOne(serviceNo, dir, (err, svc) => {
 
