@@ -113,7 +113,7 @@ class BusEmailer extends Module {
             let ExpFunfair = BusEmailer.getServiceList(ExpUpsize);
 
             mkiv = BusEmailer.getServiceList(mkiv);
-            if (mkiv123M) mkiv.push('123M');
+            if (mkiv123M) mkiv.push('<bold>123M<bold>');
 
             cameoSorter.readData((data, last) => {
                 if (+new Date() - last > 86400000)
@@ -127,7 +127,7 @@ class BusEmailer extends Module {
 
                 let freq = cameoSorter.tabulateFrequency(data);
                 let results = SLBPDownsize.filter(svc => cameoSorter.isCameo(freq, svc));
-                cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair, BBDEPFunfair, mkiv, ExpFunfair});
+                cb({svcsWithNWABs, svcsWithBendies, tridents, SLBPDownsize: results, BUDEPFunfair, KJFunfair, BBDEPFunfair, mkiv, ExpFunfair, mkiv123M});
             });
         });
 
@@ -191,6 +191,8 @@ class BusEmailer extends Module {
                     let emailBody =
 `
 <h1>Bus update as of ${new Date().toString()}</h1>
+
+${mailData.mkiv123M ? '<h1>123M MKIV</h1>': ''}
 
 ${mailData.tridents.length > 0 ? `<p>Trident Deployments</p>
 <code>${mailData.tridents.join(', ')}</code>`: ''}
