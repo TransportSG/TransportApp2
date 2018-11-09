@@ -46,7 +46,7 @@ class BusEmailer extends Module {
     static queryFunction(cb) {
 
         BusEmailer.getLTATimings(14009, '123M', arr => {
-            let mkiv123M = (arr.filter(bus => bus.Feature === '').length !== 0);
+            let mkiv123M = (arr.filter(bus => bus.Feature === '' && bus.OriginCode == '14009').length !== 0);
 
             let timingsCache = JSON.parse(JSON.stringify(BusTimings.getTimings()));
 
